@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyString
+  exhibition_center: one
+  exhibition_type: one
+  room: one
+  start_date: 2025-05-02 11:49:59
+  end_date: 2025-05-02 11:49:59
+
+two:
+  name: MyString
+  description: MyString
+  exhibition_center: two
+  exhibition_type: two
+  room: two
+  start_date: 2025-05-02 11:49:59
+  end_date: 2025-05-02 11:49:59

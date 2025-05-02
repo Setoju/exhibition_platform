@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  exhibition: one
+  ticket_type: one
+  price: 1.5
+
+two:
+  exhibition: two
+  ticket_type: two
+  price: 1.5
