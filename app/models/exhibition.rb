@@ -2,8 +2,8 @@ class Exhibition < ApplicationRecord
   belongs_to :exhibition_center
   belongs_to :room
   belongs_to :exhibition_type
-  has_many :exhibits
-  has_many :tickets
+  has_many :exhibits, dependent: :destroy
+  has_many :tickets, dependent: :destroy
 
   validates :name, presence: true
   validates :description, presence: true, length: { minimum: 10, maximum: 1000 }

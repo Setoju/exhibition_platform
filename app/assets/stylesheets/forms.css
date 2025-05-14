@@ -1,0 +1,63 @@
+.custom-form,
+.admin-form {
+  background-color: rgba(255, 127, 0, 0.05);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 127, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.custom-form input,
+.custom-form textarea,
+.custom-form select,
+.admin-form input,
+.admin-form textarea,
+.admin-form select {
+  border: 1px solid rgba(255, 127, 0, 0.2);
+  border-radius: 5px;
+}
+
+.custom-form input:focus,
+.custom-form textarea:focus,
+.custom-form select:focus,
+.admin-form input:focus,
+.admin-form textarea:focus,
+.admin-form select:focus {
+  border-color: #FF7F00;
+  box-shadow: 0 0 0 0.2rem rgba(255, 127, 0, 0.25);
+}
+
+.custom-form label,
+.admin-form label {
+  color: #FF7F00;
+  font-weight: 500;
+}
+
+.custom-form .btn-primary,
+.admin-form .btn-primary {
+  background-color: #FF7F00;
+  border-color: #FF7F00;
+}
+
+.custom-form .btn-primary:hover,
+.admin-form .btn-primary:hover {
+  background-color: #FF6600;
+  border-color: #FF6600;
+}
+
+.auth-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.auth-links .btn-outline-primary {
+  color: #FF7F00;
+  border-color: #FF7F00;
+}
+
+.auth-links .btn-outline-primary:hover {
+  color: #fff;
+  background-color: #FF7F00;
+  border-color: #FF7F00;
+}

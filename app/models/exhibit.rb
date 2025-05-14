@@ -6,6 +6,8 @@ class Exhibit < ApplicationRecord
   has_many :artist_exhibits
   has_many :artists, through: :artist_exhibits
 
+  has_many_attached :photos
+
   validates :name, presence: true, length: { maximum: 255 }
   validates :width, :height, :depth, :weight, presence: true, numericality: { greater_than: 0 }
   validates :creation_date, presence: true

@@ -1,0 +1,45 @@
+<div class="admin-form">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Manage Exhibition Centers</h1>
+    <%= link_to 'Add New Exhibition Center', new_exhibition_center_path, class: 'btn btn-primary' %>
+  </div>
+
+  <ul class="list-unstyled d-flex flex-wrap gap-2">
+    <% @exhibition_centers.each do |center| %>
+      <li>
+        <%= link_to center.name, admin_exhibition_center_path(center), class: "btn btn-outline-primary" %>
+      </li>
+    <% end %>
+  </ul>
+
+
+
+
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Contact</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @exhibition_centers.each do |center| %>
+        <tr>
+          <td><%= center.name %></td>
+          <td><%= center.address %></td>
+          <td>
+            <%= center.contact_email %><br>
+            <%= center.contact_phone %>
+          </td>
+          <td>
+            <%= link_to 'Add Room', new_admin_exhibition_center_room_path(center), class: 'btn btn-sm btn-success' %>
+            <%= link_to 'View Rooms', admin_exhibition_center_rooms_path(center), class: 'btn btn-sm btn-info' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

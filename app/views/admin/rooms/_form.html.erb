@@ -1,0 +1,35 @@
+<div class="custom-form">
+  <%= form_with(model: [:admin, exhibition_center, room], local: true) do |f| %>
+    <% if room.errors.any? %>
+      <div class="alert alert-danger">
+        <h4><%= pluralize(room.errors.count, "error") %> prevented this room from being saved:</h4>
+        <ul>
+          <% room.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="mb-3">
+      <%= f.label :name, class: "form-label" %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :width, class: "form-label" %>
+      <%= f.number_field :width, step: '0.01', class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :height, class: "form-label" %>
+      <%= f.number_field :height, step: '0.01', class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :depth, class: "form-label" %>
+      <%= f.number_field :depth, step: '0.01', class: "form-control" %>
+    </div>
+
+    <%= f.submit class: "btn btn-primary" %>
+  <% end %>
+</div>

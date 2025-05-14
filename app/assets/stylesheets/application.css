@@ -8,3 +8,58 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+.exhibit-photos {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.exhibit-photos .img-thumbnail {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.card-img-top {
+  object-fit: cover;
+  width: 100%;
+  height: 400px;
+}
+
+.placeholder-image {
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+  padding: 10px 0;
+  text-align: center;
+  z-index: 1030;
+}
+
+.footer-text {
+  margin: 0;
+  font-size: 14px;
+  color: #212529;
+}
+
+.text-orange {
+  color: #ff4500;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.text-orange:hover {
+  text-decoration: underline;
+}
+
+/* Ensure content is not covered by the footer */
+.content-container {
+  padding-bottom: 60px;
+}

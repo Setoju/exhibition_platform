@@ -1,0 +1,45 @@
+<h1>New Exhibition Center</h1>
+
+<div class="custom-form">
+  <%= form_with model: @exhibition_center, local: true do |form| %>
+    <% if @exhibition_center.errors.any? %>
+      <div class="alert alert-danger">
+        <h2><%= pluralize(@exhibition_center.errors.count, "error") %> prohibited this exhibition center from being saved:</h2>
+        <ul>
+          <% @exhibition_center.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="mb-3">
+      <%= form.label :name, class: "form-label" %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :address, class: "form-label" %>
+      <%= form.text_field :address, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :opening_hours, class: "form-label" %>
+      <%= form.text_field :opening_hours, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :contact_email, class: "form-label" %>
+      <%= form.email_field :contact_email, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :contact_phone, class: "form-label" %>
+      <%= form.telephone_field :contact_phone, class: "form-control" %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit 'Create Exhibition Center', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

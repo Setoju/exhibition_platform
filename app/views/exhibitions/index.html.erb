@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col">
+    <h1>Exhibitions</h1>
+  </div>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <% @exhibitions.each do |exhibition| %>
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title"><%= exhibition.name %></h5>
+          <p class="card-text"><%= truncate(exhibition.description, length: 100) %></p>
+          <p class="card-text">
+            <small class="text-muted">
+              <%= exhibition.start_date.strftime("%B %d, %Y") %> - 
+              <%= exhibition.end_date.strftime("%B %d, %Y") %>
+            </small>
+          </p>
+          <%= link_to 'View Details', exhibition_path(exhibition), class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

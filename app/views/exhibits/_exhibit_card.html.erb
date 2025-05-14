@@ -1,0 +1,16 @@
+<div class="card">
+  <% if exhibit.photos.attached? %>
+    <%= image_tag exhibit.photos.first.variant(resize_to_fill: [600, 400]).processed, class: "card-img-top" %>
+  <% else %>
+    <%= image_tag "placeholder.svg", class: "card-img-top placeholder-image", alt: "No image available" %>
+  <% end %>
+  <div class="card-body">
+    <h5 class="card-title"><%= exhibit.name %></h5>
+    <p class="card-text">
+      <strong>Type:</strong> <%= exhibit.exhibition_type.name %><br>
+      <strong>Dimensions:</strong> <%= exhibit.width %> x <%= exhibit.height %> x <%= exhibit.depth %> m<br>
+      <strong>Weight:</strong> <%= exhibit.weight %> kg<br>
+      <strong>Created:</strong> <%= exhibit.creation_date.strftime('%Y-%m-%d') %>
+    </p>
+  </div>
+</div>

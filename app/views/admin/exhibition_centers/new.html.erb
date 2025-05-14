@@ -1,0 +1,33 @@
+<div class="custom-form">
+  <h2>New Exhibition Center</h2>
+
+  <%= form_with(model: [:admin, @exhibition_center], local: true) do |f| %>
+    <div class="mb-3">
+      <%= f.label :name, class: "form-label" %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :address, class: "form-label" %>
+      <%= f.text_area :address, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :opening_hours, class: "form-label" %>
+      <%= f.text_field :opening_hours, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :contact_email, class: "form-label" %>
+      <%= f.email_field :contact_email, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :contact_phone, class: "form-label" %>
+      <%= f.text_field :contact_phone, class: "form-control" %>
+    </div>
+
+    <%= f.submit 'Create Exhibition Center', class: 'btn btn-primary' %>
+    <%= link_to 'Back', admin_exhibition_centers_path, class: 'btn btn-secondary' %>
+  <% end %>
+</div>

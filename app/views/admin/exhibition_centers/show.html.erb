@@ -1,0 +1,11 @@
+<h1><%= @exhibition_center.name %></h1>
+
+<%= link_to 'Add New Room', new_admin_exhibition_center_room_path(@exhibition_center), class: 'btn btn-primary' %>
+
+<ul>
+  <% @rooms.each do |room| %>
+    <li>
+      <%= link_to room.name, admin_exhibition_center_room_path(@exhibition_center, room) %>
+    </li>
+  <% end %>
+</ul>

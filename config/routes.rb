@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  devise_for :users
+  
+  namespace :admin do
+    get '/', to: 'dashboard#index', as: :dashboard
+    resources :exhibition_centers do
+      resources :rooms do
+        resources :exhibitions do
+          resources :exhibits
+        end
+      end
+    end
+    resources :exhibition_centers, only: [:destroy]
+    resources :rooms, only: [:destroy]
+    resources :exhibitions, only: [:destroy]
+    resources :exhibits, only: [:destroy]
+  end
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -10,5 +27,13 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root 'exhibitions#index'
+  
+  resources :exhibitions, only: [:index, :show] do
+    resources :exhibits, only: [:new, :create]
+  end
+  
+  resources :exhibits, only: [:index, :show]
+  resources :exhibition_centers, only: [:new, :create]
+  resources :rooms, only: [:new, :create]
 end

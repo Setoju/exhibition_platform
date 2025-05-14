@@ -1,0 +1,7 @@
+<h1>New Exhibition</h1>
+
+<%= render 'form', exhibition: @exhibition %>
+
+<div class="mt-3">
+  <%= link_to 'Back to Room', admin_exhibition_center_room_path(@exhibition.room.exhibition_center, @exhibition.room), class: 'btn btn-secondary' %>
+</div>

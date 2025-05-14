@@ -1,0 +1,33 @@
+<div class="admin-form mb-4">
+  <div class="d-flex justify-content-between align-items-center">
+    <h1>Rooms - <%= @exhibition_center.name %></h1>
+    <%= link_to 'Add New Room', new_admin_exhibition_center_room_path(@exhibition_center), class: 'btn btn-primary' %>
+  </div>
+</div>
+
+<div class="admin-form">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Dimensions (W × H × D)</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @rooms.each do |room| %>
+        <tr>
+          <td><%= room.name %></td>
+          <td><%= "#{room.width}m × #{room.height}m × #{room.depth}m" %></td>
+          <td>
+            <%= link_to 'Edit', edit_admin_exhibition_center_room_path(@exhibition_center, room), class: 'btn btn-sm btn-primary' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="mt-3">
+    <%= link_to 'Back to Centers', admin_exhibition_centers_path, class: 'btn btn-secondary' %>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="row mb-4">
+  <div class="col">
+    <h1><%= @exhibition.name %></h1>
+    <p class="lead"><%= @exhibition.description %></p>
+  </div>
+</div>
+
+<div class="row mb-4">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Exhibition Details</h5>
+        <p><strong>Type:</strong> <%= @exhibition.exhibition_type.name %></p>
+        <p><strong>Location:</strong> <%= @exhibition.exhibition_center.name %></p>
+        <p><strong>Room:</strong> <%= @exhibition.room.name %></p>
+        <p><strong>Dates:</strong> 
+          <%= @exhibition.start_date.strftime("%B %d, %Y") %> - 
+          <%= @exhibition.end_date.strftime("%B %d, %Y") %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <h2>Exhibits</h2>
+    <% if user_signed_in? %>
+      <%= link_to 'Add Exhibit', new_exhibition_exhibit_path(@exhibition), class: 'btn btn-primary mb-3' %>
+    <% end %>
+    
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <% @exhibition.exhibits.each do |exhibit| %>
+        <%= render partial: 'exhibits/exhibit_card', locals: { exhibit: exhibit } %>
+      <% end %>
+    </div>
+  </div>
+</div>
