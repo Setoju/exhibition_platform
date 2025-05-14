@@ -4,6 +4,8 @@ class Exhibition < ApplicationRecord
   belongs_to :exhibition_type
   has_many :exhibits, dependent: :destroy
   has_many :tickets, dependent: :destroy
+  has_many :favourites, dependent: :destroy
+  has_many :favourited_by, through: :favourites, source: :user
 
   validates :name, presence: true
   validates :description, presence: true, length: { minimum: 10, maximum: 1000 }

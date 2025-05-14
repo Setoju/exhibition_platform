@@ -31,9 +31,11 @@ Rails.application.routes.draw do
   
   resources :exhibitions, only: [:index, :show] do
     resources :exhibits, only: [:new, :create]
+    resource :favourite, only: [:create, :destroy]
   end
   
   resources :exhibits, only: [:index, :show]
   resources :exhibition_centers, only: [:new, :create]
   resources :rooms, only: [:new, :create]
+  resources :favourites, only: [:index]
 end

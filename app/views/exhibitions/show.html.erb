@@ -2,6 +2,13 @@
   <div class="col">
     <h1><%= @exhibition.name %></h1>
     <p class="lead"><%= @exhibition.description %></p>
+    <% if user_signed_in? %>
+      <% if current_user.favourite_exhibitions.exists?(@exhibition.id) %>
+        <%= button_to 'Remove from Favourites', exhibition_favourite_path(@exhibition), method: :delete, class: 'btn btn-warning' %>
+      <% else %>
+        <%= button_to 'Add to Favourites', exhibition_favourite_path(@exhibition), method: :post, class: 'btn btn-outline-warning' %>
+      <% end %>
+    <% end %>
   </div>
 </div>
 

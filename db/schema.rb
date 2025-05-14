@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_05_084816) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_15_220000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -113,6 +113,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_05_084816) do
     t.index ["room_id"], name: "index_exhibits_on_room_id"
   end
 
+  create_table "favourites", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "exhibition_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exhibition_id"], name: "index_favourites_on_exhibition_id"
+    t.index ["user_id", "exhibition_id"], name: "index_favourites_on_user_id_and_exhibition_id", unique: true
+    t.index ["user_id"], name: "index_favourites_on_user_id"
+  end
+
   create_table "purchases", force: :cascade do |t|
     t.bigint "ticket_id", null: false
     t.datetime "purchase_date"
@@ -150,6 +160,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_05_084816) do
     t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "ticket_type", default: 0, null: false
     t.index ["exhibition_id"], name: "index_tickets_on_exhibition_id"
     t.index ["ticket_type_id"], name: "index_tickets_on_ticket_type_id"
   end
@@ -178,6 +189,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_05_084816) do
   add_foreign_key "exhibits", "exhibition_types"
   add_foreign_key "exhibits", "exhibitions"
   add_foreign_key "exhibits", "rooms"
+  add_foreign_key "favourites", "exhibitions"
+  add_foreign_key "favourites", "users"
   add_foreign_key "purchases", "tickets"
   add_foreign_key "rooms", "exhibition_centers"
   add_foreign_key "tickets", "exhibitions"

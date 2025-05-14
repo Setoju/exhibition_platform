@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
+
+  has_many :favourites, dependent: :destroy
+  has_many :favourite_exhibitions, through: :favourites, source: :exhibition
 end
