@@ -61,3 +61,32 @@
   background-color: #FF7F00;
   border-color: #FF7F00;
 }
+
+.custom-form h2,
+.admin-form h2 {
+  color: #FF7F00;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.custom-form .form-group,
+.admin-form .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.custom-form .form-control,
+.admin-form .form-control {
+  padding: 0.75rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.custom-form .form-text,
+.admin-form .form-text {
+  color: rgba(255, 127, 0, 0.8);
+}
+
+.custom-form .form-check-label,
+.admin-form .form-check-label {
+  color: #444;
+}

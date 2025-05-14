@@ -1,21 +1,9 @@
 <div class="admin-form">
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h1>Manage Exhibition Centers</h1>
-    <%= link_to 'Add New Exhibition Center', new_exhibition_center_path, class: 'btn btn-primary' %>
+    <%= link_to 'Add New Exhibition Center', new_admin_exhibition_center_path, class: 'btn btn-primary' %>
   </div>
-
-  <ul class="list-unstyled d-flex flex-wrap gap-2">
-    <% @exhibition_centers.each do |center| %>
-      <li>
-        <%= link_to center.name, admin_exhibition_center_path(center), class: "btn btn-outline-primary" %>
-      </li>
-    <% end %>
-  </ul>
-
-
-
-
-
+  
   <table class="table">
     <thead>
       <tr>

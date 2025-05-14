@@ -1,8 +1,8 @@
 <div class="card">
   <% if exhibit.photos.attached? %>
-    <%= image_tag exhibit.photos.first.variant(resize_to_fill: [600, 400]).processed, class: "card-img-top" %>
+    <%= image_tag exhibit.photos.first.variant(resize_to_fill: [400, 300]).processed, class: "card-img-top exhibit-photo" %>
   <% else %>
-    <%= image_tag "placeholder.svg", class: "card-img-top placeholder-image", alt: "No image available" %>
+    <%= image_tag "placeholder.svg", class: "card-img-top exhibit-photo placeholder-image", alt: "No image available" %>
   <% end %>
   <div class="card-body">
     <h5 class="card-title"><%= exhibit.name %></h5>
