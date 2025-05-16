@@ -1,6 +1,5 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!
-  before_action :authorize_admin
 
   def new
     @room = Room.new
@@ -19,9 +18,5 @@ class RoomsController < ApplicationController
 
   def room_params
     params.require(:room).permit(:name, :width, :height, :depth, :exhibition_center_id)
-  end
-
-  def authorize_admin
-    redirect_to root_path, alert: 'Access denied.' unless current_user&.admin?
   end
 end
