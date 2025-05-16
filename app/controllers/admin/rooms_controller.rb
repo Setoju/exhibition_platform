@@ -1,7 +1,7 @@
 module Admin
   class RoomsController < ApplicationController
     before_action :authenticate_user!
-    before_action :authorize_admin
+    before_action :require_admin
     before_action :set_exhibition_center
     before_action :set_room, only: [:destroy]
 
@@ -53,10 +53,6 @@ module Admin
 
     def room_params
       params.require(:room).permit(:name, :width, :height, :depth)
-    end
-
-    def authorize_admin
-      redirect_to root_path, alert: 'Access denied.' unless current_user&.admin?
     end
 
     def set_room

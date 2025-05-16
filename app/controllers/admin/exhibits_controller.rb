@@ -37,11 +37,5 @@ module Admin
     def exhibit_params
       params.require(:exhibit).permit(:name, :width, :height, :depth, :weight, :creation_date, :room_id)
     end
-
-    def require_admin
-      unless current_user&.admin?
-        redirect_to root_path, alert: 'Unauthorized access'
-      end
-    end
   end
 end

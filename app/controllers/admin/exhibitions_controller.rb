@@ -1,7 +1,7 @@
 module Admin
   class ExhibitionsController < ApplicationController
     before_action :authenticate_user!
-    before_action :authorize_admin
+    before_action :require_admin
     before_action :set_room
     before_action :set_exhibition, only: [:destroy]
 
@@ -59,10 +59,6 @@ module Admin
 
     def exhibition_params
       params.require(:exhibition).permit(:name, :description, :start_date, :end_date, :exhibition_type_id, :exhibition_center_id, :room_id)
-    end
-
-    def authorize_admin
-      redirect_to root_path, alert: 'Access denied.' unless current_user&.admin?
     end
   end
 end

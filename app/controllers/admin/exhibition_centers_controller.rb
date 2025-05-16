@@ -1,6 +1,6 @@
 class Admin::ExhibitionCentersController < ApplicationController
   before_action :authenticate_user!
-  before_action :authorize_admin
+  before_action :require_admin
   before_action :set_exhibition_center, only: [:destroy]
 
   def index
@@ -34,10 +34,6 @@ class Admin::ExhibitionCentersController < ApplicationController
 
   def exhibition_center_params
     params.require(:exhibition_center).permit(:name, :address, :opening_hours, :contact_email, :contact_phone)
-  end
-
-  def authorize_admin
-    redirect_to root_path, alert: 'Access denied.' unless current_user&.admin?
   end
 
   def set_exhibition_center
