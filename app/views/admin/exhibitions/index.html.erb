@@ -29,11 +29,13 @@
             <%= exhibition.end_date.strftime("%d/%m/%Y") %>
           </td>
           <td>
-            <%= link_to 'Edit', edit_admin_exhibition_center_room_exhibition_path(exhibition.room.exhibition_center, exhibition.room, exhibition), class: 'btn btn-sm btn-primary' %>
-            <%= link_to 'Delete', admin_exhibition_center_room_exhibition_path(exhibition.room.exhibition_center, exhibition.room, exhibition), 
-                method: :delete, 
-                data: { confirm: 'Are you sure?' }, 
-                class: 'btn btn-sm btn-danger' %>
+            <div class="d-flex gap-1">
+              <%= link_to 'Edit', edit_admin_exhibition_center_room_exhibition_path(exhibition.room.exhibition_center, exhibition.room, exhibition), class: 'btn btn-sm btn-primary' %>
+              <%= button_to 'Delete', admin_exhibition_center_room_exhibition_path(exhibition.room.exhibition_center, exhibition.room, exhibition), 
+                  method: :delete, 
+                  data: { confirm: 'Are you sure?' }, 
+                  class: 'btn btn-sm btn-danger' %>
+            </div>
           </td>
         </tr>
       <% end %>

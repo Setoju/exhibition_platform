@@ -20,8 +20,11 @@
           <td><%= room.name %></td>
           <td><%= "#{room.width}m × #{room.height}m × #{room.depth}m" %></td>
           <td>
-            <%= link_to 'Edit', edit_admin_exhibition_center_room_path(@exhibition_center, room), class: 'btn btn-sm btn-primary' %>
-            <%= link_to 'View Exhibitions', admin_exhibition_center_room_path(@exhibition_center, room), class: 'btn btn-sm btn-info' %>
+            <div class="d-flex gap-1">
+              <%= link_to 'Edit', edit_admin_exhibition_center_room_path(@exhibition_center, room), class: 'btn btn-sm btn-primary' %>
+              <%= link_to 'View Exhibitions', admin_exhibition_center_room_path(@exhibition_center, room), class: 'btn btn-sm btn-info' %>
+              <%= button_to 'Delete', admin_exhibition_center_room_path(@exhibition_center, room), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+            </div>
           </td>
         </tr>
       <% end %>

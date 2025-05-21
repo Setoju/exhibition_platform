@@ -1,5 +1,5 @@
 class Exhibition < ApplicationRecord
-  belongs_to :exhibition_center, dependent: :destroy
+  belongs_to :exhibition_center
   belongs_to :room
   belongs_to :exhibition_type
   has_many :exhibits, dependent: :destroy
