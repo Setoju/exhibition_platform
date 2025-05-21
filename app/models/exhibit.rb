@@ -21,6 +21,16 @@ class Exhibit < ApplicationRecord
 
     if width > room.width || height > room.height || depth > room.depth
       errors.add(:base, "Exhibit dimensions must not exceed room dimensions")
+      return
+    end
+
+    room_volume = room.width * room.height * room.depth
+    existing_exhibits = room.exhibits.where.not(id: id)
+    used_volume = existing_exhibits.sum { |e| e.width * e.height * e.depth }
+    total_volume = used_volume + (width * height * depth)
+
+    if total_volume > room_volume
+      errors.add(:base, "Room cannot fit more exhibits: total exhibit volume exceeds room volume")
     end
   end
 
