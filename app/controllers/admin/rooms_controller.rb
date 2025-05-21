@@ -21,7 +21,7 @@ module Admin
     def create
       @room = @exhibition_center.rooms.build(room_params)
       if @room.save
-        redirect_to admin_exhibition_center_path(@exhibition_center), notice: 'Room created successfully.'
+        redirect_to admin_exhibition_center_rooms_path(@exhibition_center), notice: 'Room created successfully.'
       else
         render :new, alert: 'Failed to create Room.'
       end
@@ -42,7 +42,7 @@ module Admin
 
     def destroy
       @room.destroy
-      redirect_to exhibition_center_path(@room.exhibition_center), notice: 'Room was successfully deleted.'
+      redirect_to admin_exhibition_center_rooms_path(@room.exhibition_center), notice: 'Room was successfully deleted.'
     end
 
     private
