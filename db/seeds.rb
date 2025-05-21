@@ -9,9 +9,9 @@
 #   end
 
 # Create admin user
-User.create!(
-  email: 'admin@example.com',
-  password: 'password123',
-  password_confirmation: 'password123',
-  admin: true
-)
+#User.create!(
+#  email: 'admin@example.com',
+#  password: 'password123',
+#  password_confirmation: 'password123',
+#  admin: true
+#)

@@ -1,6 +1,6 @@
 class Room < ApplicationRecord
   belongs_to :exhibition_center
-  has_many :exhibitions
+  has_many :exhibitions, dependent: :destroy
   has_many :exhibits
 
   validates :name, presence: true, uniqueness: { scope: :exhibition_center_id }

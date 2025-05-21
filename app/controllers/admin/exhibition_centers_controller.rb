@@ -1,7 +1,7 @@
 class Admin::ExhibitionCentersController < ApplicationController
   before_action :authenticate_user!
   before_action :require_admin
-  before_action :set_exhibition_center, only: [:destroy]
+  before_action :set_exhibition_center, only: [:destroy, :edit, :update]
 
   def index
     @exhibition_centers = ExhibitionCenter.all
@@ -25,9 +25,22 @@ class Admin::ExhibitionCentersController < ApplicationController
     end
   end
 
+  def edit
+    @exhibition_center = ExhibitionCenter.find(params[:id])
+  end
+
+  def update
+    @exhibition_center = ExhibitionCenter.find(params[:id])
+    if @exhibition_center.update(exhibition_center_params)
+      redirect_to admin_exhibition_centers_path, notice: 'Exhibition center updated successfully.'
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @exhibition_center.destroy
-    redirect_to exhibition_centers_path, notice: 'Exhibition center was successfully deleted.'
+    redirect_to admin_exhibition_centers_path, notice: 'Exhibition center was successfully deleted.'
   end
 
   private

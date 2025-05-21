@@ -1,6 +1,16 @@
 <h1>Sign Up</h1>
 
 <div class="custom-form">
+  <% if @user.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h4>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <%= form_with model: @user, local: true do |form| %>
     <div class="field">
       <%= form.label :email %>

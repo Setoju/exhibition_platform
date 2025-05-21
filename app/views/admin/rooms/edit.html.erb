@@ -3,6 +3,16 @@
     <h1 class="text-center mb-4">Edit Room: <%= @room.name %></h1>
 
     <div class="custom-form">
+      <% if @room.errors.any? %>
+        <div class="alert alert-danger">
+          <h4><%= pluralize(@room.errors.count, "error") %> prohibited this room from being saved:</h4>
+          <ul>
+            <% @room.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
       <%= form_with model: [:admin, @exhibition_center, @room], local: true do |form| %>
         <% if @room.errors.any? %>
           <div class="alert alert-danger">
@@ -37,7 +47,7 @@
 
         <div class="d-flex gap-2">
           <%= form.submit 'Update Room', class: "btn btn-primary" %>
-          <%= link_to 'Back', admin_exhibition_center_rooms_path(@exhibition_center), class: 'btn btn-secondary' %>
+          <%= link_to 'Back', request.referer || admin_exhibition_center_rooms_path(@exhibition_center), class: 'btn btn-secondary' %>
         </div>
       <% end %>
     </div>

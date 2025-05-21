@@ -1,7 +1,7 @@
 <div class="admin-form mb-4">
   <div class="d-flex justify-content-between align-items-center">
     <h1>Manage Exhibitions</h1>
-    <%= link_to 'Add New Exhibition', new_admin_exhibition_path, class: 'btn btn-primary' %>
+    <%= link_to 'Add New Exhibition', new_admin_exhibition_center_room_exhibition_path(@room.exhibition_center, @room), class: 'btn btn-primary' %>
   </div>
 </div>
 
@@ -29,8 +29,8 @@
             <%= exhibition.end_date.strftime("%d/%m/%Y") %>
           </td>
           <td>
-            <%= link_to 'Edit', edit_admin_exhibition_path(exhibition), class: 'btn btn-sm btn-primary' %>
-            <%= link_to 'Delete', admin_exhibition_path(exhibition), 
+            <%= link_to 'Edit', edit_admin_exhibition_center_room_exhibition_path(exhibition.room.exhibition_center, exhibition.room, exhibition), class: 'btn btn-sm btn-primary' %>
+            <%= link_to 'Delete', admin_exhibition_center_room_exhibition_path(exhibition.room.exhibition_center, exhibition.room, exhibition), 
                 method: :delete, 
                 data: { confirm: 'Are you sure?' }, 
                 class: 'btn btn-sm btn-danger' %>

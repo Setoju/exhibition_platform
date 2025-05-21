@@ -25,7 +25,8 @@ module Admin
       if @exhibition.save
         redirect_to admin_exhibition_center_room_path(@room.exhibition_center, @room), notice: 'Exhibition created successfully.'
       else
-        render :new, alert: 'Failed to create Exhibition.'
+        flash.now[:alert] = 'Failed to create Exhibition.'
+        render :new
       end
     end
 
@@ -58,7 +59,9 @@ module Admin
     end
 
     def exhibition_params
-      params.require(:exhibition).permit(:name, :description, :start_date, :end_date, :exhibition_type_id, :exhibition_center_id, :room_id)
+      params.require(:exhibition).permit(
+        :name, :description, :start_date, :end_date, :exhibition_type_id, :exhibition_center_id, :room_id
+      )
     end
   end
 end

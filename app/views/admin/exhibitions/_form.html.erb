@@ -13,7 +13,7 @@
 
     <div class="mb-3">
       <%= f.label :name, class: "form-label" %>
-      <%= f.text_field :name, class: "form-control" %>
+      <%= f.text_field :name, class: "form-control"%>
     </div>
 
     <div class="mb-3">
@@ -47,6 +47,6 @@
     </div>
 
     <%= f.submit class: "btn btn-primary" %>
-    <%= link_to 'Back', admin_exhibition_center_room_path(@exhibition.room.exhibition_center, @exhibition.room), class: 'btn btn-secondary' %>
+    <%= link_to 'Back', request.referer || admin_exhibition_center_room_exhibitions_path(@exhibition.room.exhibition_center, @exhibition.room), class: 'btn btn-secondary ms-2' %>
   <% end %>
 </div>

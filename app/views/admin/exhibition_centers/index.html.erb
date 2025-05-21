@@ -23,8 +23,12 @@
             <%= center.contact_phone %>
           </td>
           <td>
-            <%= link_to 'Add Room', new_admin_exhibition_center_room_path(center), class: 'btn btn-sm btn-success' %>
-            <%= link_to 'View Rooms', admin_exhibition_center_rooms_path(center), class: 'btn btn-sm btn-info' %>
+            <div class="d-flex gap-1">
+              <%= link_to 'Add Room', new_admin_exhibition_center_room_path(center), class: 'btn btn-sm btn-success' %>
+              <%= link_to 'View Rooms', admin_exhibition_center_rooms_path(center), class: 'btn btn-sm btn-info' %>
+              <%= link_to 'Edit', edit_admin_exhibition_center_path(center), class: 'btn btn-sm btn-warning' %>
+              <%= button_to 'Delete', admin_exhibition_center_path(center), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+            </div>
           </td>
         </tr>
       <% end %>

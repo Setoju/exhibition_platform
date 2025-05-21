@@ -2,6 +2,16 @@
   <div class="col-md-8">
     <h1 class="text-center mb-4">New Exhibit</h1>
     <div class="custom-form">
+      <% if @exhibit.errors.any? %>
+        <div class="alert alert-danger">
+          <h4><%= pluralize(@exhibit.errors.count, "error") %> prevented this exhibit from being saved:</h4>
+          <ul>
+            <% @exhibit.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
       <%= form_with model: [@exhibition, @exhibit], local: true do |form| %>
         <% if @exhibit.errors.any? %>
           <div class="alert alert-danger">

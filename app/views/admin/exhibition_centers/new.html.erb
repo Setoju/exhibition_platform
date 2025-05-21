@@ -1,6 +1,16 @@
 <div class="custom-form">
   <h2>New Exhibition Center</h2>
 
+  <% if @exhibition_center.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(@exhibition_center.errors.count, "error") %> prohibited this exhibition center from being saved:</h4>
+      <ul>
+        <% @exhibition_center.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <%= form_with(model: [:admin, @exhibition_center], local: true) do |f| %>
     <div class="mb-3">
       <%= f.label :name, class: "form-label" %>
@@ -28,6 +38,6 @@
     </div>
 
     <%= f.submit 'Create Exhibition Center', class: 'btn btn-primary' %>
-    <%= link_to 'Back', admin_exhibition_centers_path, class: 'btn btn-secondary' %>
+    <%= link_to 'Back', request.referer || admin_exhibition_centers_path, class: 'btn btn-secondary' %>
   <% end %>
 </div>

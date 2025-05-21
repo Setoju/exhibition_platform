@@ -1,7 +1,7 @@
 <h1>New Exhibition</h1>
 
-<%= render 'form', exhibition: @exhibition %>
+<% if flash[:alert].present? %>
+  <div class="alert alert-danger"><%= flash[:alert] %></div>
+<% end %>
 
-<div class="mt-3">
-  <%= link_to 'Back', admin_exhibition_center_room_path(@exhibition.room.exhibition_center, @exhibition.room), class: 'btn btn-secondary' %>
-</div>
+<%= render 'form', exhibition: @exhibition %>

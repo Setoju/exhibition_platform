@@ -10,10 +10,12 @@ Rails.application.routes.draw do
         end
       end
     end
-    resources :exhibition_centers, only: [:destroy]
     resources :rooms, only: [:destroy]
     resources :exhibitions, only: [:destroy]
     resources :exhibits, only: [:destroy]
+    resources :rooms do
+      resources :exhibitions, only: [:new, :create, :index, :show, :edit, :update, :destroy]
+    end
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
