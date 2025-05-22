@@ -21,25 +21,24 @@ module Admin
 
     def create
       @room = Room.find(params[:room_id])
-      @exhibition = @room.exhibitions.build(exhibition_params)
+      @exhibition = @room.exhibitions.build(exhibition_params)      
       if @exhibition.save
         redirect_to admin_exhibition_center_room_path(@room.exhibition_center, @room), notice: 'Exhibition created successfully.'
       else
-        flash.now[:alert] = 'Failed to create Exhibition.'
-        render :new
+        render :new, status: :unprocessable_entity
       end
     end
 
     def edit
       @exhibition = Exhibition.find(params[:id])
-    end
-
+    end  
+      
     def update
       @exhibition = Exhibition.find(params[:id])
       if @exhibition.update(exhibition_params)
         redirect_to admin_exhibitions_path, notice: 'Exhibition updated successfully.'
       else
-        render :edit
+        render :edit, status: :unprocessable_entity
       end
     end
 

@@ -14,14 +14,13 @@ class Admin::ExhibitionCentersController < ApplicationController
 
   def new
     @exhibition_center = ExhibitionCenter.new
-  end
-
+  end    
   def create
     @exhibition_center = ExhibitionCenter.new(exhibition_center_params)
     if @exhibition_center.save
       redirect_to admin_exhibition_centers_path, notice: 'Exhibition center created successfully.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -30,11 +29,11 @@ class Admin::ExhibitionCentersController < ApplicationController
   end
 
   def update
-    @exhibition_center = ExhibitionCenter.find(params[:id])
+    @exhibition_center = ExhibitionCenter.find(params[:id])    
     if @exhibition_center.update(exhibition_center_params)
       redirect_to admin_exhibition_centers_path, notice: 'Exhibition center updated successfully.'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

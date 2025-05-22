@@ -10,11 +10,11 @@ module Admin
     end
 
     def create
-      @exhibit = @exhibition.exhibits.build(exhibit_params)
+      @exhibit = @exhibition.exhibits.build(exhibit_params)      
       if @exhibit.save
         redirect_to admin_exhibition_center_path(@exhibition.room.exhibition_center), notice: 'Exhibit created successfully.'
       else
-        render :new, alert: 'Failed to create Exhibit.'
+        render :new, status: :unprocessable_entity
       end
     end
 

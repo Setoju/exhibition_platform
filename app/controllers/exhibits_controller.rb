@@ -20,12 +20,11 @@ class ExhibitsController < ApplicationController
     
     unless @exhibit.exhibition_type_id == @exhibition.exhibition_type_id
       return redirect_to @exhibition, alert: 'Exhibit type must match exhibition type'
-    end
-
+    end    
     if @exhibit.save
       redirect_to @exhibition, notice: 'Exhibit was successfully added.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 

@@ -19,11 +19,11 @@ module Admin
     end
 
     def create
-      @room = @exhibition_center.rooms.build(room_params)
+      @room = @exhibition_center.rooms.build(room_params)      
       if @room.save
         redirect_to admin_exhibition_center_rooms_path(@exhibition_center), notice: 'Room created successfully.'
       else
-        render :new, alert: 'Failed to create Room.'
+        render :new, status: :unprocessable_entity
       end
     end
 
@@ -32,11 +32,11 @@ module Admin
     end
 
     def update
-      @room = @exhibition_center.rooms.find(params[:id])
+      @room = @exhibition_center.rooms.find(params[:id])      
       if @room.update(room_params)
         redirect_to admin_exhibition_center_path(@exhibition_center), notice: 'Room updated successfully.'
       else
-        render :edit, alert: 'Failed to update Room.'
+        render :edit, status: :unprocessable_entity
       end
     end
 

@@ -2,4 +2,8 @@
   <h1>Edit Exhibition</h1>
 </div>
 
+<% if flash[:alert].present? %>
+  <div class="alert alert-danger"><%= flash[:alert] %></div>
+<% end %>
+
 <%= render 'form', exhibition: @exhibition %>

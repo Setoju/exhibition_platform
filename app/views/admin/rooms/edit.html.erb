@@ -1,55 +1,5 @@
-<div class="row justify-content-center">
-  <div class="col-md-8">
-    <h1 class="text-center mb-4">Edit Room: <%= @room.name %></h1>
+<div class="custom-form">
+  <h1>Edit Room: <%= @room.name %></h1>
 
-    <div class="custom-form">
-      <% if @room.errors.any? %>
-        <div class="alert alert-danger">
-          <h4><%= pluralize(@room.errors.count, "error") %> prohibited this room from being saved:</h4>
-          <ul>
-            <% @room.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-      <%= form_with model: [:admin, @exhibition_center, @room], local: true do |form| %>
-        <% if @room.errors.any? %>
-          <div class="alert alert-danger">
-            <h2><%= pluralize(@room.errors.count, "error") %> prohibited this room from being saved:</h2>
-            <ul>
-              <% @room.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
-
-        <div class="mb-3">
-          <%= form.label :name, class: "form-label" %>
-          <%= form.text_field :name, class: "form-control" %>
-        </div>
-
-        <div class="mb-3">
-          <%= form.label :width, class: "form-label" %>
-          <%= form.number_field :width, step: 0.01, class: "form-control" %>
-        </div>
-
-        <div class="mb-3">
-          <%= form.label :height, class: "form-label" %>
-          <%= form.number_field :height, step: 0.01, class: "form-control" %>
-        </div>
-
-        <div class="mb-3">
-          <%= form.label :depth, class: "form-label" %>
-          <%= form.number_field :depth, step: 0.01, class: "form-control" %>
-        </div>
-
-        <div class="d-flex gap-2">
-          <%= form.submit 'Update Room', class: "btn btn-primary" %>
-          <%= link_to 'Back', request.referer || admin_exhibition_center_rooms_path(@exhibition_center), class: 'btn btn-secondary' %>
-        </div>
-      <% end %>
-    </div>
-  </div>
+  <%= render 'form', exhibition_center: @exhibition_center, room: @room %>
 </div>
