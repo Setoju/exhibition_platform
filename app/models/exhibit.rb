@@ -8,14 +8,26 @@ class Exhibit < ApplicationRecord
 
   has_many_attached :photos
 
+  attr_accessor :artist_name
+
   validates :name, presence: true, length: { maximum: 255 }
   validates :width, :height, :depth, :weight, presence: true, numericality: { greater_than: 0 }
   validates :creation_date, presence: true
+  validates :artist_name, presence: true
   validate :fits_in_room
   validate :creation_date_not_in_future
   validate :exhibition_type_must_match
 
+  after_save :create_or_find_artist
+
   private
+
+  def create_or_find_artist
+    return if artist_name.blank?
+    
+    artist = Artist.find_or_create_by(name: artist_name.strip)
+    artist_exhibits.find_or_create_by(artist: artist)
+  end
 
   def fits_in_room
     return unless room && width && height && depth

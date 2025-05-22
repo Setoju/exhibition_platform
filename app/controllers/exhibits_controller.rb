@@ -24,10 +24,8 @@ class ExhibitsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-
   private
-
   def exhibit_params
-    params.require(:exhibit).permit(:name, :width, :height, :depth, :weight, :creation_date, :exhibition_type_id, :room_id, photos: [])
+    params.require(:exhibit).permit(:name, :width, :height, :depth, :weight, :creation_date, :exhibition_type_id, :room_id, :artist_name, photos: [])
   end
 end

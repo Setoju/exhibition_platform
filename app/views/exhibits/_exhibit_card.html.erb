@@ -5,9 +5,9 @@
     <%= image_tag "placeholder.svg", class: "card-img-top exhibit-photo placeholder-image", alt: "No image available" %>
   <% end %>
   <div class="card-body">
-    <h5 class="card-title"><%= exhibit.name %></h5>
-    <p class="card-text">
+    <h5 class="card-title"><%= exhibit.name %></h5>    <p class="card-text">
       <strong>Type:</strong> <%= exhibit.exhibition_type.name %><br>
+      <strong>Artist:</strong> <%= exhibit.artists.map(&:name).join(", ") %><br>
       <strong>Dimensions:</strong> <%= exhibit.width %> x <%= exhibit.height %> x <%= exhibit.depth %> m<br>
       <strong>Weight:</strong> <%= exhibit.weight %> kg<br>
       <strong>Created:</strong> <%= exhibit.creation_date.strftime('%Y-%m-%d') %>
