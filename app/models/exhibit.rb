@@ -13,6 +13,7 @@ class Exhibit < ApplicationRecord
   validates :creation_date, presence: true
   validate :fits_in_room
   validate :creation_date_not_in_future
+  validate :exhibition_type_must_match
 
   private
 
@@ -37,6 +38,12 @@ class Exhibit < ApplicationRecord
   def creation_date_not_in_future
     if creation_date.present? && creation_date > Date.current
       errors.add(:creation_date, "cannot be in the future")
+    end
+  end
+
+  def exhibition_type_must_match
+    if exhibition_type_id != exhibition&.exhibition_type_id
+      errors.add(:exhibition_type_id, "must match exhibition type")
     end
   end
 end

@@ -18,9 +18,6 @@ class ExhibitsController < ApplicationController
     @exhibition = Exhibition.find(params[:exhibition_id])
     @exhibit = @exhibition.exhibits.build(exhibit_params)
     
-    unless @exhibit.exhibition_type_id == @exhibition.exhibition_type_id
-      return redirect_to @exhibition, alert: 'Exhibit type must match exhibition type'
-    end    
     if @exhibit.save
       redirect_to @exhibition, notice: 'Exhibit was successfully added.'
     else
