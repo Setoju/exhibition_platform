@@ -5,6 +5,31 @@
   </div>
 </div>
 
+<div class="card mb-4">
+  <div class="card-body">
+    <%= form_tag admin_exhibition_center_rooms_path(@exhibition_center), method: :get, class: 'row g-3' do %>
+      <div class="col-md-3">
+        <%= text_field_tag :search_name, params[:search_name], class: 'form-control', placeholder: 'Search by name' %>
+      </div>
+      <div class="col-md-2">
+        <%= number_field_tag :min_width, params[:min_width], class: 'form-control', placeholder: 'Min width (m)', step: '0.01' %>
+      </div>
+      <div class="col-md-2">
+        <%= number_field_tag :min_height, params[:min_height], class: 'form-control', placeholder: 'Min height (m)', step: '0.01' %>
+      </div>
+      <div class="col-md-2">
+        <%= number_field_tag :min_depth, params[:min_depth], class: 'form-control', placeholder: 'Min depth (m)', step: '0.01' %>
+      </div>
+      <div class="col-md-3">
+        <div class="d-flex gap-2">
+          <%= submit_tag 'Filter', class: 'btn btn-secondary' %>
+          <%= link_to 'Clear', admin_exhibition_center_rooms_path(@exhibition_center), class: 'btn btn-outline-secondary' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
 <div class="admin-form">
   <table class="table">
     <thead>

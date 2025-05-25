@@ -5,6 +5,32 @@
   </div>
 </div>
 
+<div class="card mb-4">
+  <div class="card-body">
+    <%= form_tag admin_exhibition_center_room_exhibitions_path(@room.exhibition_center, @room), method: :get, class: 'row g-3' do %>
+      <div class="col-md-3">
+        <%= text_field_tag :search_name, params[:search_name], class: 'form-control', placeholder: 'Search by name' %>
+      </div>
+      <div class="col-md-3">
+        <%= select_tag :exhibition_type_id, 
+            options_from_collection_for_select(ExhibitionType.all, 'id', 'name', params[:exhibition_type_id]),
+            prompt: 'Select Type',
+            class: 'form-control' %>
+      </div>
+      <div class="col-md-2">
+        <%= date_field_tag :start_date, params[:start_date], class: 'form-control', placeholder: 'Start date' %>
+      </div>
+      <div class="col-md-2">
+        <%= date_field_tag :end_date, params[:end_date], class: 'form-control', placeholder: 'End date' %>
+      </div>
+      <div class="col-md-2">
+        <%= submit_tag 'Filter', class: 'btn btn-secondary' %>
+        <%= link_to 'Clear', admin_exhibition_center_room_exhibitions_path(@room.exhibition_center, @room), class: 'btn btn-outline-secondary' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
 <div class="admin-form">
   <table class="table">
     <thead>

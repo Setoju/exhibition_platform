@@ -3,6 +3,28 @@
     <h1>Manage Exhibition Centers</h1>
     <%= link_to 'Add New Exhibition Center', new_admin_exhibition_center_path, class: 'btn btn-primary' %>
   </div>
+
+  <div class="card mb-4">
+    <div class="card-body">
+      <%= form_tag admin_exhibition_centers_path, method: :get, class: 'row g-3' do %>
+        <div class="col-md-3">
+          <%= text_field_tag :search_name, params[:search_name], class: 'form-control', placeholder: 'Search by name' %>
+        </div>
+        <div class="col-md-3">
+          <%= text_field_tag :search_address, params[:search_address], class: 'form-control', placeholder: 'Search by address' %>
+        </div>
+        <div class="col-md-3">
+          <%= text_field_tag :search_contact, params[:search_contact], class: 'form-control', placeholder: 'Search by contact (email/phone)' %>
+        </div>
+        <div class="col-md-3">
+          <div class="d-flex gap-2">
+            <%= submit_tag 'Filter', class: 'btn btn-secondary' %>
+            <%= link_to 'Clear', admin_exhibition_centers_path, class: 'btn btn-outline-secondary' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
   
   <table class="table">
     <thead>

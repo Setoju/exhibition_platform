@@ -7,6 +7,11 @@ module Admin
 
     def index
       @rooms = @exhibition_center.rooms
+      @rooms = @rooms.where('name ILIKE ?', "%#{params[:search_name]}%") if params[:search_name].present?
+      @rooms = @rooms.where('width >= ?', params[:min_width]) if params[:min_width].present?
+      @rooms = @rooms.where('height >= ?', params[:min_height]) if params[:min_height].present?
+      @rooms = @rooms.where('depth >= ?', params[:min_depth]) if params[:min_depth].present?
+
       respond_to do |format|
         format.html
         format.json { render json: @rooms.map { |room| { id: room.id, name: room.name } } }
@@ -16,6 +21,20 @@ module Admin
     def show
       @room = @exhibition_center.rooms.find(params[:id])
       @exhibitions = @room.exhibitions
+
+      @exhibitions = @exhibitions.where('name ILIKE ?', "%#{params[:search_name]}%") if params[:search_name].present?
+      @exhibitions = @exhibitions.where(exhibition_type_id: params[:exhibition_type_id]) if params[:exhibition_type_id].present?
+      
+      if params[:status].present?
+        case params[:status]
+        when 'Upcoming'
+          @exhibitions = @exhibitions.where('start_date > ?', Date.today)
+        when 'Ongoing'
+          @exhibitions = @exhibitions.where('start_date <= ? AND end_date >= ?', Date.today, Date.today)
+        when 'Finished'
+          @exhibitions = @exhibitions.where('end_date < ?', Date.today)
+        end
+      end
     end
 
     def new
