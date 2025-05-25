@@ -25,6 +25,6 @@ class ExhibitsController < ApplicationController
     end
   end
   private  def exhibit_params
-    params.require(:exhibit).permit(:name, :width, :height, :depth, :weight, :creation_date, :exhibition_type_id, :room_id, :artist_name, :material, :copy, photos: [])
+    params.require(:exhibit).permit(:name, :width, :height, :depth, :weight, :creation_date, :exhibition_type_id, :room_id, :material, :copy, :artist_name, :artist_biography, :artist_contact_email, :artist_contact_phone, photos: [])
   end
 end
