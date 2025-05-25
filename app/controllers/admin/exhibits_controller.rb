@@ -32,10 +32,8 @@ module Admin
 
     def set_exhibition
       @exhibition = Exhibition.find(params[:exhibition_id])
-    end
-
-    def exhibit_params
-      params.require(:exhibit).permit(:name, :width, :height, :depth, :weight, :creation_date, :room_id)
+    end    def exhibit_params
+      params.require(:exhibit).permit(:name, :width, :height, :depth, :weight, :creation_date, :room_id, :material, :copy)
     end
   end
 end

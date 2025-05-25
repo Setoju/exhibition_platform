@@ -58,6 +58,16 @@
         </div>
 
         <div class="mb-3">
+          <%= form.label :material, "Material", class: "form-label" %>
+          <%= form.text_field :material, class: "form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :copy, "Artwork Status", class: "form-label" %>
+          <%= form.select :copy, [["Original", false], ["Copy", true]], { prompt: "Select artwork status" }, class: "form-select" %>
+        </div>
+
+        <div class="mb-3">
           <%= form.label :photos, "Upload Photos", class: "form-label" %>
           <%= form.file_field :photos, multiple: true, accept: "image/*", class: "form-control" %>
         </div>

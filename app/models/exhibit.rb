@@ -3,7 +3,7 @@ class Exhibit < ApplicationRecord
   belongs_to :room
   belongs_to :exhibition_type
 
-  has_many :artist_exhibits
+  has_many :artist_exhibits, dependent: :destroy
   has_many :artists, through: :artist_exhibits
 
   has_many_attached :photos
