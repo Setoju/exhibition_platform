@@ -7,6 +7,10 @@ module Admin
 
     def index
       @rooms = @exhibition_center.rooms
+      respond_to do |format|
+        format.html
+        format.json { render json: @rooms.map { |room| { id: room.id, name: room.name } } }
+      end
     end
 
     def show
