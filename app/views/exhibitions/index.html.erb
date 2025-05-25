@@ -17,6 +17,11 @@
               <%= exhibition.end_date.strftime("%B %d, %Y") %>
             </small>
           </p>
+          <p>
+            <span class="badge <%= exhibition.status == 'Finished' ? 'bg-secondary' : (exhibition.status == 'Ongoing' ? 'bg-success' : 'bg-primary') %>">
+              <%= exhibition.status %>
+            </span>
+          </p>
           <%= link_to 'View Details', exhibition_path(exhibition), class: 'btn btn-primary' %>
         </div>
       </div>

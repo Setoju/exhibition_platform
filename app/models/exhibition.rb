@@ -13,6 +13,16 @@ class Exhibition < ApplicationRecord
   validate :dates_not_in_past
   validate :no_time_collision_in_room
 
+  def status
+    if end_date < Date.current
+      'Finished'
+    elsif start_date > Date.current
+      'Upcoming'
+    else
+      'Ongoing'
+    end
+  end
+
   private
 
   def end_date_after_start_date

@@ -15,6 +15,7 @@
           <th>Type</th>
           <th>Start Date</th>
           <th>End Date</th>
+          <th>Status</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -25,6 +26,11 @@
             <td><%= exhibition.exhibition_type.name %></td>
             <td><%= exhibition.start_date.strftime("%Y-%m-%d") %></td>
             <td><%= exhibition.end_date.strftime("%Y-%m-%d") %></td>
+            <td>
+              <span class="badge <%= exhibition.status == 'Finished' ? 'bg-secondary' : (exhibition.status == 'Ongoing' ? 'bg-success' : 'bg-primary') %>">
+                <%= exhibition.status %>
+              </span>
+            </td>
             <td>
               <div class="d-flex gap-1">
                 <%= link_to 'View', admin_exhibition_center_room_exhibition_path(@room.exhibition_center, @room, exhibition), class: 'btn btn-sm btn-info' %>
