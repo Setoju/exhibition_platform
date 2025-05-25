@@ -11,6 +11,7 @@ class Exhibition < ApplicationRecord
   validates :start_date, :end_date, presence: true
   validate :end_date_after_start_date
   validate :dates_not_in_past
+  validate :no_time_collision_in_room
 
   private
 
@@ -22,6 +23,21 @@ class Exhibition < ApplicationRecord
   def dates_not_in_past
     if start_date.present? && start_date < Date.current
       errors.add(:start_date, "cannot be in the past")
+    end
+  end
+
+  def no_time_collision_in_room
+    return unless room_id.present? && start_date.present? && end_date.present?
+    
+    overlapping_exhibitions = room.exhibitions
+      .where.not(id: id)
+      .where('(start_date <= ? AND end_date >= ?) OR (start_date <= ? AND end_date >= ?) OR (start_date >= ? AND end_date <= ?)',
+        end_date, end_date,
+        start_date, start_date,
+        start_date, end_date)
+    
+    if overlapping_exhibitions.exists?
+      errors.add(:base, 'There is already an exhibition scheduled in this room during the selected dates')
     end
   end
 end
