@@ -8,7 +8,7 @@ class Exhibit < ApplicationRecord
 
   has_many_attached :photos
 
-  attr_accessor :artist_name
+  attr_accessor :artist_name, :artist_biography, :artist_contact_email, :artist_contact_phone
 
   validates :name, presence: true, length: { maximum: 255 }
   validates :width, :height, :depth, :weight, presence: true, numericality: { greater_than: 0 }
@@ -26,6 +26,12 @@ class Exhibit < ApplicationRecord
     return if artist_name.blank?
     
     artist = Artist.find_or_create_by(name: artist_name.strip)
+    artist.update(
+      biography: artist_biography,
+      contact_email: artist_contact_email,
+      contact_phone: artist_contact_phone
+    ) if artist && (artist_biography.present? || artist_contact_email.present? || artist_contact_phone.present?)
+    
     artist_exhibits.find_or_create_by(artist: artist)
   end
 

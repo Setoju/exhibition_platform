@@ -17,7 +17,10 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Exhibition Details</h5>
-        <p><strong>Type:</strong> <%= @exhibition.exhibition_type.name %></p>
+        <p>
+          <strong>Type:</strong> <%= @exhibition.exhibition_type.name %>
+          <small class="d-block text-muted mt-1"><%= @exhibition.exhibition_type.description %></small>
+        </p>
         <p><strong>Location:</strong> <%= @exhibition.exhibition_center.name %></p>
         <p><strong>Room:</strong> <%= @exhibition.room.name %></p>
         <p>
@@ -36,7 +39,7 @@
 <div class="row">
   <div class="col">
     <h2>Exhibits</h2>
-    <% if user_signed_in? %>
+    <% if current_user.admin? %>
       <%= link_to 'Add Exhibit', new_exhibition_exhibit_path(@exhibition), class: 'btn btn-primary mb-3' %>
     <% end %>
     

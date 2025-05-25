@@ -17,17 +17,18 @@
         <div class="mb-3">
           <%= form.label :name, class: "form-label" %>
           <%= form.text_field :name, class: "form-control" %>
-        </div>
-
-        <div class="mb-3">
+        </div>        <div class="mb-3">
           <%= form.label :exhibition_type_id, "Exhibit Type", class: "form-label" %>
-          <%= form.collection_select :exhibition_type_id, ExhibitionType.all, :id, :name, { prompt: "Select Exhibit Type" }, class: "form-select" %>
+          <%= form.collection_select :exhibition_type_id, ExhibitionType.all, :id, :name, 
+              { prompt: "Select Exhibit Type" }, 
+              class: "form-select",
+              data: {
+                descriptions: ExhibitionType.all.map { |type| [type.id, type.description] }.to_h.to_json
+              } %>
+          <small id="exhibitionTypeDescription" class="form-text text-muted mt-1"></small>
         </div>
 
-        <div class="mb-3">
-          <%= form.label :room_id, "Room", class: "form-label" %>
-          <%= form.collection_select :room_id, @exhibition.exhibition_center.rooms, :id, :name, { prompt: "Select Room" }, class: "form-select" %>
-        </div>
+        <%= form.hidden_field :room_id, value: @exhibition.room_id %>
 
         <div class="mb-3">
           <%= form.label :width, class: "form-label" %>
@@ -52,10 +53,28 @@
         <div class="mb-3">
           <%= form.label :creation_date, class: "form-label" %>
           <%= form.date_field :creation_date, class: "form-control" %>
-        </div>        <div class="mb-3">
-          <%= form.label :artist_name, "Artist Name", class: "form-label" %>
-          <%= form.text_field :artist_name, class: "form-control" %>
-        </div>
+        </div>        <fieldset class="mb-4">
+          <legend>Artist Information</legend>
+          <div class="mb-3">
+            <%= form.label :artist_name, "Artist Name", class: "form-label" %>
+            <%= form.text_field :artist_name, class: "form-control" %>
+          </div>
+
+          <div class="mb-3">
+            <%= form.label :artist_biography, "Artist Biography", class: "form-label" %>
+            <%= form.text_area :artist_biography, class: "form-control", rows: 3 %>
+          </div>
+
+          <div class="mb-3">
+            <%= form.label :artist_contact_email, "Artist Contact Email", class: "form-label" %>
+            <%= form.email_field :artist_contact_email, class: "form-control" %>
+          </div>
+
+          <div class="mb-3">
+            <%= form.label :artist_contact_phone, "Artist Contact Phone", class: "form-label" %>
+            <%= form.telephone_field :artist_contact_phone, class: "form-control" %>
+          </div>
+        </fieldset>
 
         <div class="mb-3">
           <%= form.label :material, "Material", class: "form-label" %>

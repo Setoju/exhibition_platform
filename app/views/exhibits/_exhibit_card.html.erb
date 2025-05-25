@@ -5,12 +5,36 @@
     <%= image_tag "placeholder.svg", class: "card-img-top exhibit-photo placeholder-image", alt: "No image available" %>
   <% end %>
   <div class="card-body">
-    <h5 class="card-title"><%= exhibit.name %></h5>    <p class="card-text">
-      <strong>Type:</strong> <%= exhibit.exhibition_type.name %><br>
-      <strong>Artist:</strong> <%= exhibit.artists.map(&:name).join(", ") %><br>
-      <strong>Dimensions:</strong> <%= exhibit.width %> x <%= exhibit.height %> x <%= exhibit.depth %> m<br>
-      <strong>Weight:</strong> <%= exhibit.weight %> kg<br>
-      <strong>Created:</strong> <%= exhibit.creation_date.strftime('%Y-%m-%d') %>
-    </p>
+    <h5 class="card-title"><%= exhibit.name %></h5>
+    <div class="card-text">
+      <strong>Type:</strong> <%= exhibit.exhibition_type.name %>
+      <small class="d-block text-muted mb-2"><%= exhibit.exhibition_type.description %></small>
+
+      <strong>Artist(s):</strong>
+      <% exhibit.artists.each do |artist| %>
+        <div class="mb-2">
+          <div><%= artist.name %></div>
+          <% if artist.biography.present? %>
+            <small class="d-block text-muted"><%= truncate(artist.biography, length: 100) %></small>
+          <% end %>
+          <% if artist.contact_email.present? || artist.contact_phone.present? %>
+            <small class="d-block">
+              <% if artist.contact_email.present? %>
+                <%= mail_to artist.contact_email, artist.contact_email, class: 'text-muted' %><br>
+              <% end %>
+              <% if artist.contact_phone.present? %>
+                <%= link_to artist.contact_phone, "tel:#{artist.contact_phone}", class: 'text-muted' %>
+              <% end %>
+            </small>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class="mt-2">
+        <strong>Dimensions:</strong> <%= exhibit.width %> x <%= exhibit.height %> x <%= exhibit.depth %> m<br>
+        <strong>Weight:</strong> <%= exhibit.weight %> kg<br>
+        <strong>Created:</strong> <%= exhibit.creation_date.strftime('%Y-%m-%d') %>
+      </div>
+    </div>
   </div>
 </div>
