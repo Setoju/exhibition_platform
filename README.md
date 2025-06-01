@@ -1,24 +1,49 @@
-# README
+# Exhibition Platform
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A web-based platform designed to manage and showcase exhibitions, developed as part of a university coursework project.
 
-Things you may want to cover:
+# Overview
 
-* Ruby version
+The exhibition platform allows users to create, manage, and explore various exhibitions. It provides functionalities for organizers to set up exhibitions and for visitors to browse through them.
 
-* System dependencies
+# Features
 
-* Configuration
+* User authentication and authorization
 
-* Database creation
+* Exhibition creation and management
 
-* Database initialization
+* Search and filter exhibitions
 
-* How to run the test suite
+* Responsive design for various devices
 
-* Services (job queues, cache servers, search engines, etc.)
+# Tech Stack
 
-* Deployment instructions
+* Frontend: HTML, CSS, JavaScript
 
-* ...
+* Backend: Ruby on Rails
+
+* Database: PostgreSQL
+
+* Deployment: Docker
+
+# Installation
+
+1. Clone the repository:
+```
+git clone https://github.com/Setoju/exhibition_platform.git
+cd exhibition_platform
+```
+2. Install dependencies:
+```
+bundle install
+```
+3. Set up the database:
+```
+rails db:create
+rails db:migrate
+rails db:seed
+```
+4. Run the server:
+```
+rails servers
+```

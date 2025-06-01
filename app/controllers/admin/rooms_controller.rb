@@ -4,7 +4,7 @@ module Admin
     before_action :require_admin
     before_action :set_exhibition_center
     before_action :set_room, only: [:destroy]
-
+# TODO: Add pagination
     def index
       @rooms = @exhibition_center.rooms
       @rooms = @rooms.where('name ILIKE ?', "%#{params[:search_name]}%") if params[:search_name].present?

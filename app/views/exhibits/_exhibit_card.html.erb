@@ -7,9 +7,6 @@
   <div class="card-body">
     <h5 class="card-title"><%= exhibit.name %></h5>
     <div class="card-text">
-      <strong>Type:</strong> <%= exhibit.exhibition_type.name %>
-      <small class="d-block text-muted mb-2"><%= exhibit.exhibition_type.description %></small>
-
       <strong>Artist(s):</strong>
       <% exhibit.artists.each do |artist| %>
         <div class="mb-2">
