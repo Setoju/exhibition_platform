@@ -32,6 +32,10 @@
         <strong>Weight:</strong> <%= exhibit.weight %> kg<br>
         <strong>Created:</strong> <%= exhibit.creation_date.strftime('%Y-%m-%d') %>
       </div>
+
+      <% if current_user.admin? %>
+        <%= button_to 'Delete', admin_exhibit_path(exhibit), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+      <% end %>
     </div>
   </div>
 </div>
