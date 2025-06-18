@@ -10,9 +10,6 @@ Rails.application.routes.draw do
         end
       end
     end
-    resources :rooms, only: [:destroy]
-    resources :exhibitions, only: [:destroy]
-    resources :exhibits, only: [:destroy]
     resources :rooms do
       resources :exhibitions, only: [:new, :create, :index, :show, :edit, :update, :destroy]
     end
