@@ -4,9 +4,9 @@ module Admin
     before_action :require_admin
     before_action :set_exhibition_center
     before_action :set_room, only: [:destroy]
-# TODO: Add pagination
+    
     def index
-      @rooms = @exhibition_center.rooms
+      @rooms = @exhibition_center.rooms.page(params[:page]).per(5)
       @rooms = @rooms.where('name ILIKE ?', "%#{params[:search_name]}%") if params[:search_name].present?
       @rooms = @rooms.where('width >= ?', params[:min_width]) if params[:min_width].present?
       @rooms = @rooms.where('height >= ?', params[:min_height]) if params[:min_height].present?
@@ -20,7 +20,7 @@ module Admin
 
     def show
       @room = @exhibition_center.rooms.find(params[:id])
-      @exhibitions = @room.exhibitions
+      @exhibitions = @room.exhibitions.page(params[:page]).per(5)
 
       @exhibitions = @exhibitions.where('name ILIKE ?', "%#{params[:search_name]}%") if params[:search_name].present?
       @exhibitions = @exhibitions.where(exhibition_type_id: params[:exhibition_type_id]) if params[:exhibition_type_id].present?
