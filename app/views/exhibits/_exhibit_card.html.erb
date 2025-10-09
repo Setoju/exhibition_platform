@@ -34,7 +34,7 @@
       </div>
 
       <% if current_user.admin? %>
-        <%= button_to 'Delete', admin_exhibit_path(exhibit), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+        <%= button_to 'Delete', exhibit_path(exhibit), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
       <% end %>
     </div>
   </div>
