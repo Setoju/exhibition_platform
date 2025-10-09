@@ -3,35 +3,33 @@
     <h1>Room: <%= @room.name %></h1>
     <%= link_to 'Add New Exhibition', new_admin_room_exhibition_path(@room), class: 'btn btn-primary' %>
   </div>
-</div>
 
-<div class="card mb-4">
-  <div class="card-body">
-    <%= form_tag admin_exhibition_center_room_path(@room.exhibition_center, @room), method: :get, class: 'row g-3' do %>
-      <div class="col-md-3">
-        <%= text_field_tag :search_name, params[:search_name], class: 'form-control', placeholder: 'Search by name' %>
-      </div>
-      <div class="col-md-3">
-        <%= select_tag :exhibition_type_id, 
-            options_from_collection_for_select(ExhibitionType.all, 'id', 'name', params[:exhibition_type_id]),
-            prompt: 'Select Type',
-            class: 'form-control' %>
-      </div>
-      <div class="col-md-2">
-        <%= select_tag :status,
-            options_for_select([['Upcoming', 'Upcoming'], ['Ongoing', 'Ongoing'], ['Finished', 'Finished']], params[:status]),
-            prompt: 'Select Status',
-            class: 'form-control' %>
-      </div>
-      <div class="col-md-2">
-        <%= submit_tag 'Filter', class: 'btn btn-secondary' %>
-        <%= link_to 'Clear', admin_exhibition_center_room_path(@room.exhibition_center, @room), class: 'btn btn-outline-secondary' %>
-      </div>
-    <% end %>
+  <div class="card mb-4">
+    <div class="card-body">
+      <%= form_tag admin_exhibition_center_room_path(@room.exhibition_center, @room), method: :get, class: 'row g-3' do %>
+        <div class="col-md-3">
+          <%= text_field_tag :search_name, params[:search_name], class: 'form-control', placeholder: 'Search by name' %>
+        </div>
+        <div class="col-md-3">
+          <%= select_tag :exhibition_type_id, 
+              options_from_collection_for_select(ExhibitionType.all, 'id', 'name', params[:exhibition_type_id]),
+              prompt: 'Select Type',
+              class: 'form-control' %>
+        </div>
+        <div class="col-md-2">
+          <%= select_tag :status,
+              options_for_select([['Upcoming', 'Upcoming'], ['Ongoing', 'Ongoing'], ['Finished', 'Finished']], params[:status]),
+              prompt: 'Select Status',
+              class: 'form-control' %>
+        </div>
+        <div class="col-md-2">
+          <%= submit_tag 'Filter', class: 'btn btn-secondary' %>
+          <%= link_to 'Clear', admin_exhibition_center_room_path(@room.exhibition_center, @room), class: 'btn btn-outline-secondary' %>
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>
 
-<div class="admin-form">
   <h2>Exhibitions in this Room</h2>
   <% if @exhibitions.present? && @exhibitions.any? %>
     <table class="table">
@@ -71,8 +69,13 @@
   <% else %>
     <p>No exhibitions in this room yet.</p>
   <% end %>
+
+  <div class="pagination-container">
+    <%= paginate @exhibitions %>
+  </div>
+
+  <div class="mt-3">
+    <%= link_to 'Back to Rooms', admin_exhibition_center_rooms_path(@room.exhibition_center), class: 'btn btn-secondary' %>
+  </div>
 </div>
 
-<div class="mt-3">
-  <%= link_to 'Back to Rooms', admin_exhibition_center_rooms_path(@room.exhibition_center), class: 'btn btn-secondary' %>
-</div>
