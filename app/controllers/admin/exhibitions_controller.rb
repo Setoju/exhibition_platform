@@ -6,7 +6,7 @@ module Admin
     before_action :set_exhibition, only: [:destroy]
 
     def index
-      @exhibitions = Exhibition.all
+      @exhibitions = Exhibition.page(params[:page]).per(9)
     end
 
     def show

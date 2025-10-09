@@ -1,6 +1,6 @@
 class ExhibitionsController < ApplicationController
   def index
-    @exhibitions = Exhibition.all
+    @exhibitions = Exhibition.page(params[:page]).per(9)
   end
 
   def show
