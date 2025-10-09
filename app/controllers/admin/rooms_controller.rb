@@ -6,11 +6,9 @@ module Admin
     before_action :set_room, only: [:destroy]
     
     def index
-      @rooms = @exhibition_center.rooms.page(params[:page]).per(5)
-      @rooms = @rooms.where('name ILIKE ?', "%#{params[:search_name]}%") if params[:search_name].present?
-      @rooms = @rooms.where('width >= ?', params[:min_width]) if params[:min_width].present?
-      @rooms = @rooms.where('height >= ?', params[:min_height]) if params[:min_height].present?
-      @rooms = @rooms.where('depth >= ?', params[:min_depth]) if params[:min_depth].present?
+      @rooms = apply_room_filters(@exhibition_center.rooms)
+                .page(params[:page])
+                .per(5)
 
       respond_to do |format|
         format.html
@@ -20,21 +18,9 @@ module Admin
 
     def show
       @room = @exhibition_center.rooms.find(params[:id])
-      @exhibitions = @room.exhibitions.page(params[:page]).per(5)
-
-      @exhibitions = @exhibitions.where('name ILIKE ?', "%#{params[:search_name]}%") if params[:search_name].present?
-      @exhibitions = @exhibitions.where(exhibition_type_id: params[:exhibition_type_id]) if params[:exhibition_type_id].present?
-      
-      if params[:status].present?
-        case params[:status]
-        when 'Upcoming'
-          @exhibitions = @exhibitions.where('start_date > ?', Date.today)
-        when 'Ongoing'
-          @exhibitions = @exhibitions.where('start_date <= ? AND end_date >= ?', Date.today, Date.today)
-        when 'Finished'
-          @exhibitions = @exhibitions.where('end_date < ?', Date.today)
-        end
-      end
+      @exhibitions = apply_exhibition_filters(@room.exhibitions)
+                    .page(params[:page])
+                    .per(5)
     end
 
     def new
@@ -80,6 +66,32 @@ module Admin
 
     def set_room
       @room = Room.find(params[:id])
+    end
+
+    def apply_room_filters(scope)
+      scope = scope.where('name ILIKE ?', "%#{params[:search_name]}%") if params[:search_name].present?
+      scope = scope.where('width >= ?', params[:min_width]) if params[:min_width].present?
+      scope = scope.where('height >= ?', params[:min_height]) if params[:min_height].present?
+      scope = scope.where('depth >= ?', params[:min_depth]) if params[:min_depth].present?
+      scope
+    end
+
+    def apply_exhibition_filters(scope)
+      scope = scope.where('name ILIKE ?', "%#{params[:search_name]}%") if params[:search_name].present?
+      scope = scope.where(exhibition_type_id: params[:exhibition_type_id]) if params[:exhibition_type_id].present?
+      
+      if params[:status].present?
+        case params[:status]
+        when 'Upcoming'
+          scope = scope.where('start_date > ?', Date.today)
+        when 'Ongoing'
+          scope = scope.where('start_date <= ? AND end_date >= ?', Date.today, Date.today)
+        when 'Finished'
+          scope = scope.where('end_date < ?', Date.today)
+        end
+      end
+      
+      scope
     end
   end
 end

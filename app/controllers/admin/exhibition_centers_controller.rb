@@ -4,14 +4,9 @@ class Admin::ExhibitionCentersController < ApplicationController
   before_action :set_exhibition_center, only: [:destroy, :edit, :update]
 
   def index
-    @exhibition_centers = ExhibitionCenter.page(params[:page]).per(5)
-    @exhibition_centers = @exhibition_centers.where('name ILIKE ?', "%#{params[:search_name]}%") if params[:search_name].present?
-    @exhibition_centers = @exhibition_centers.where('address ILIKE ?', "%#{params[:search_address]}%") if params[:search_address].present?
-    
-    if params[:search_contact].present?
-      contact_search = "%#{params[:search_contact]}%"
-      @exhibition_centers = @exhibition_centers.where('contact_email ILIKE ? OR contact_phone ILIKE ?', contact_search, contact_search)
-    end
+    @exhibition_centers = apply_filters(ExhibitionCenter.all)
+                         .page(params[:page])
+                         .per(5)
   end
 
   def show
@@ -57,5 +52,17 @@ class Admin::ExhibitionCentersController < ApplicationController
 
   def set_exhibition_center
     @exhibition_center = ExhibitionCenter.find(params[:id])
+  end
+
+  def apply_filters(scope)
+    scope = scope.where('name ILIKE ?', "%#{params[:search_name]}%") if params[:search_name].present?
+    scope = scope.where('address ILIKE ?', "%#{params[:search_address]}%") if params[:search_address].present?
+    
+    if params[:search_contact].present?
+      contact_search = "%#{params[:search_contact]}%"
+      scope = scope.where('contact_email ILIKE ? OR contact_phone ILIKE ?', contact_search, contact_search)
+    end
+    
+    scope
   end
 end
