@@ -4,7 +4,7 @@ class Admin::ExhibitionCentersController < ApplicationController
   before_action :set_exhibition_center, only: [:destroy, :edit, :update]
 
   def index
-    @exhibition_centers = ExhibitionCenter.all
+    @exhibition_centers = ExhibitionCenter.page(params[:page]).per(5)
     @exhibition_centers = @exhibition_centers.where('name ILIKE ?', "%#{params[:search_name]}%") if params[:search_name].present?
     @exhibition_centers = @exhibition_centers.where('address ILIKE ?', "%#{params[:search_address]}%") if params[:search_address].present?
     
