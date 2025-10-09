@@ -28,6 +28,8 @@ gem "solid_cache"
 gem "solid_queue"
 gem "solid_cable"
 
+gem "kaminari"
+
 gem "dotenv-rails", groups: %i[ development test ]
 
 # Reduces boot times through caching; required in config/boot.rb
