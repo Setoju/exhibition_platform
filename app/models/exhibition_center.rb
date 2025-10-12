@@ -1,7 +1,7 @@
 class ExhibitionCenter < ApplicationRecord
   has_many :rooms, dependent: :destroy
   has_many :exhibitions, dependent: :destroy
-  
+
   validates :name, presence: true
   validates :address, presence: true
   validates :opening_hours, presence: true

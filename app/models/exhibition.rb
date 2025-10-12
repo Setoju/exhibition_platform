@@ -15,11 +15,11 @@ class Exhibition < ApplicationRecord
 
   def status
     if end_date < Date.current
-      'Finished'
+      "Finished"
     elsif start_date > Date.current
-      'Upcoming'
+      "Upcoming"
     else
-      'Ongoing'
+      "Ongoing"
     end
   end
 
@@ -38,16 +38,16 @@ class Exhibition < ApplicationRecord
 
   def no_time_collision_in_room
     return unless room_id.present? && start_date.present? && end_date.present?
-    
+
     overlapping_exhibitions = room.exhibitions
       .where.not(id: id)
-      .where('(start_date <= ? AND end_date >= ?) OR (start_date <= ? AND end_date >= ?) OR (start_date >= ? AND end_date <= ?)',
+      .where("(start_date <= ? AND end_date >= ?) OR (start_date <= ? AND end_date >= ?) OR (start_date >= ? AND end_date <= ?)",
         end_date, end_date,
         start_date, start_date,
         start_date, end_date)
-    
+
     if overlapping_exhibitions.exists?
-      errors.add(:base, 'There is already an exhibition scheduled in this room during the selected dates')
+      errors.add(:base, "There is already an exhibition scheduled in this room during the selected dates")
     end
   end
 end

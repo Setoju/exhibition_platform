@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  
+
   namespace :admin do
-    get '/', to: 'dashboard#index', as: :dashboard
+    get "/", to: "dashboard#index", as: :dashboard
     resources :exhibition_centers do
       resources :rooms do
         resources :exhibitions do
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       end
     end
     resources :rooms do
-      resources :exhibitions, only: [:new, :create, :index, :show, :edit, :update, :destroy]
+      resources :exhibitions, only: [ :new, :create, :index, :show, :edit, :update, :destroy ]
     end
   end
 
@@ -26,15 +26,15 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  root 'exhibitions#index'
-  
-  resources :exhibitions, only: [:index, :show] do
-    resources :exhibits, only: [:new, :create]
-    resource :favourite, only: [:create, :destroy]
+  root "exhibitions#index"
+
+  resources :exhibitions, only: [ :index, :show ] do
+    resources :exhibits, only: [ :new, :create ]
+    resource :favourite, only: [ :create, :destroy ]
   end
-  
-  resources :exhibits, only: [:index, :show]
-  resources :exhibition_centers, only: [:new, :create]
-  resources :rooms, only: [:new, :create]
-  resources :favourites, only: [:index]
+
+  resources :exhibits, only: [ :index, :show ]
+  resources :exhibition_centers, only: [ :new, :create ]
+  resources :rooms, only: [ :new, :create ]
+  resources :favourites, only: [ :index ]
 end
