@@ -10,8 +10,6 @@
  */
 
 /* Minimal styles for layout and branding */
-
-/* Flexbox layout for sticky footer */
 html, body {
   height: 100%;
 }
@@ -22,17 +20,17 @@ body {
 }
 
 .container.main-padding {
-  flex: 1 0 auto; /* This will take up the remaining space */
+  flex: 1 0 auto;
 }
 
 .footer {
-  flex-shrink: 0; /* Prevent footer from shrinking */
+  flex-shrink: 0;
   width: 100%;
   background-color: #f8f9fa;
   border-top: 1px solid #e9ecef;
   padding: 10px 0;
   text-align: center;
-  margin-top: auto; /* Push footer to bottom */
+  margin-top: auto;
 }
 
 .footer-text {
@@ -55,21 +53,6 @@ h1, h2, h3, h4, h5, h6 {
   color: #FF7F00;
   margin-bottom: 1rem;
   font-weight: 600;
-}
-
-.card {
-  border: 1px solid rgba(255, 127, 0, 0.2);
-  box-shadow: 0 2px 4px rgba(255, 127, 0, 0.1);
-  margin-bottom: 1.5rem;
-}
-
-.card-header {
-  background-color: rgba(255, 127, 0, 0.1);
-  border-bottom: 1px solid rgba(255, 127, 0, 0.2);
-}
-
-.card-title {
-  color: #FF7F00;
 }
 
 a:not(.btn):not(.nav-link) {
@@ -96,72 +79,4 @@ a:not(.btn):not(.nav-link):hover {
 .alert-danger {
   background-color: rgba(220, 53, 69, 0.1);
   color: #dc3545;
-}
-
-.exhibit-photo {
-  width: 400px;
-  height: 300px;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Pagination Styles */
-.pagination {
-  --bs-pagination-color: #FF4400;
-  --bs-pagination-hover-color: #FF6600;
-  --bs-pagination-hover-bg: rgba(255, 127, 0, 0.1);
-  --bs-pagination-hover-border-color: rgba(255, 127, 0, 0.3);
-  --bs-pagination-focus-color: #FF6600;
-  --bs-pagination-focus-bg: rgba(255, 127, 0, 0.1);
-  --bs-pagination-focus-box-shadow: 0 0 0 0.25rem rgba(255, 127, 0, 0.25);
-  --bs-pagination-active-color: #fff;
-  --bs-pagination-active-bg: #FF7F00;
-  --bs-pagination-active-border-color: #FF7F00;
-  --bs-pagination-disabled-color: #6c757d;
-  --bs-pagination-disabled-bg: #fff;
-  --bs-pagination-disabled-border-color: #dee2e6;
-}
-
-.pagination .page-link {
-  border-radius: 6px;
-  margin: 0 2px;
-  font-weight: 500;
-  transition: all 0.2s ease-in-out;
-  border: 1px solid rgba(255, 127, 0, 0.2);
-}
-
-.pagination .page-link:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(255, 127, 0, 0.2);
-}
-
-.pagination .page-item.active .page-link {
-  background-color: #FF7F00 !important;
-  border-color: #FF7F00 !important;
-  color: white !important;
-  font-weight: 600;
-  box-shadow: 0 2px 4px rgba(255, 127, 0, 0.3);
-  border-radius: 6px !important;
-}
-
-.pagination .page-item.active .page-link.current-page {
-  cursor: default;
-  background-color: #FF7F00 !important;
-  border-radius: 6px !important;
-}
-
-.pagination .page-item.disabled .page-link {
-  color: #6c757d;
-  background-color: #f8f9fa;
-  border-color: #dee2e6;
-}
-
-.pagination-container {
-  padding: 1rem 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
