@@ -54,11 +54,8 @@
     </tbody>
   </table>
 
-  <div class="pagination-container">
+  <div class="pagination-container d-flex justify-content-center align-items-center position-relative">
+    <%= link_to 'Back to Centers', admin_exhibition_centers_path, class: 'btn btn-secondary position-absolute start-0 align-self-start' %>
     <%= paginate @rooms %>
-  </div>
-
-  <div>
-    <%= link_to 'Back to Centers', admin_exhibition_centers_path, class: 'btn btn-secondary' %>
   </div>
 </div>
