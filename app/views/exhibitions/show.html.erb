@@ -4,9 +4,9 @@
     <p class="lead"><%= @exhibition.description %></p>
     <% if user_signed_in? %>
       <% if current_user.favourite_exhibitions.exists?(@exhibition.id) %>
-        <%= button_to 'Remove from Favourites', exhibition_favourite_path(@exhibition), method: :delete, class: 'btn btn-warning' %>
+        <%= button_to "Remove from Favourites", exhibition_favourite_path(@exhibition), method: :delete, class: "btn btn-warning" %>
       <% else %>
-        <%= button_to 'Add to Favourites', exhibition_favourite_path(@exhibition), method: :post, class: 'btn btn-outline-warning' %>
+        <%= button_to "Add to Favourites", exhibition_favourite_path(@exhibition), method: :post, class: "btn btn-outline-warning" %>
       <% end %>
     <% end %>
   </div>
@@ -27,7 +27,7 @@
           <strong>Dates:</strong> 
           <%= @exhibition.start_date.strftime("%B %d, %Y") %> - 
           <%= @exhibition.end_date.strftime("%B %d, %Y") %>
-          <span class="badge <%= @exhibition.status == 'Finished' ? 'bg-secondary' : (@exhibition.status == 'Ongoing' ? 'bg-success' : 'bg-primary') %> ms-2">
+          <span class="badge <%= @exhibition.status == "Finished" ? "bg-secondary" : (@exhibition.status == "Ongoing" ? "bg-success" : "bg-primary") %> ms-2">
             <%= @exhibition.status %>
           </span>
         </p>
@@ -40,12 +40,12 @@
   <div class="col">
     <h2>Exhibits</h2>
     <% if current_user.admin? %>
-      <%= link_to 'Add Exhibit', new_exhibition_exhibit_path(@exhibition), class: 'btn btn-primary mb-3' %>
+      <%= link_to "Add Exhibit", new_exhibition_exhibit_path(@exhibition), class: "btn btn-primary mb-3" %>
     <% end %>
     
     <div class="row row-cols-1 row-cols-md-3 g-4">
       <% @exhibition.exhibits.each do |exhibit| %>
-        <%= render partial: 'exhibits/exhibit_card', locals: { exhibit: exhibit } %>
+        <%= render partial: "exhibits/exhibit_card", locals: { exhibit: exhibit } %>
       <% end %>
     </div>
   </div>

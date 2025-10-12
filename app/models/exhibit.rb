@@ -29,7 +29,7 @@ class Exhibit < ApplicationRecord
     artist.update(
       biography: artist_biography,
       contact_email: artist_contact_email,
-      contact_phone: artist_contact_phone
+      contact_phone: artist_contact_phone,
     ) if artist && (artist_biography.present? || artist_contact_email.present? || artist_contact_phone.present?)
 
     artist_exhibits.find_or_create_by(artist: artist)

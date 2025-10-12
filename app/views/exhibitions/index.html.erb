@@ -6,28 +6,28 @@
 
 <div class="card mb-4">
   <div class="card-body">
-    <%= form_tag exhibitions_path, method: :get, class: 'row g-3' do %>
+    <%= form_tag exhibitions_path, method: :get, class: "row g-3" do %>
       <div class="col-md-3">
-        <%= text_field_tag :search_name, params[:search_name], class: 'form-control', placeholder: 'Search by name' %>
+        <%= text_field_tag :search_name, params[:search_name], class: "form-control", placeholder: "Search by name" %>
       </div>
       <div class="col-md-3">
-        <%= select_tag :exhibition_type_id, 
-            options_from_collection_for_select(ExhibitionType.all, 'id', 'name', params[:exhibition_type_id]),
-            prompt: 'Select Type',
-            class: 'form-control' %>
+        <%= select_tag :exhibition_type_id,
+                       options_from_collection_for_select(ExhibitionType.all, "id", "name", params[:exhibition_type_id]),
+                       prompt: "Select Type",
+                       class: "form-control" %>
       </div>
       <div class="col-md-2">
-        <%= text_field_tag :exhibition_center_name, params[:exhibition_center_name], class: 'form-control', placeholder: 'Center name' %>
+        <%= text_field_tag :exhibition_center_name, params[:exhibition_center_name], class: "form-control", placeholder: "Center name" %>
       </div>
       <div class="col-md-2">
         <%= select_tag :status,
-            options_for_select([['Upcoming', 'Upcoming'], ['Ongoing', 'Ongoing'], ['Finished', 'Finished']], params[:status]),
-            prompt: 'Select Status',
-            class: 'form-control' %>
+                       options_for_select([["Upcoming", "Upcoming"], ["Ongoing", "Ongoing"], ["Finished", "Finished"]], params[:status]),
+                       prompt: "Select Status",
+                       class: "form-control" %>
       </div>
       <div class="col-md-2">
-        <%= submit_tag 'Filter', class: 'btn btn-secondary' %>
-        <%= link_to 'Clear', exhibitions_path, class: 'btn btn-outline-secondary' %>
+        <%= submit_tag "Filter", class: "btn btn-secondary" %>
+        <%= link_to "Clear", exhibitions_path, class: "btn btn-outline-secondary" %>
       </div>
     <% end %>
   </div>
@@ -47,11 +47,11 @@
             </small>
           </p>
           <p>
-            <span class="badge <%= exhibition.status == 'Finished' ? 'bg-secondary' : (exhibition.status == 'Ongoing' ? 'bg-success' : 'bg-primary') %>">
+            <span class="badge <%= exhibition.status == "Finished" ? "bg-secondary" : (exhibition.status == "Ongoing" ? "bg-success" : "bg-primary") %>">
               <%= exhibition.status %>
             </span>
           </p>
-          <%= link_to 'View Details', exhibition_path(exhibition), class: 'btn btn-primary' %>
+          <%= link_to "View Details", exhibition_path(exhibition), class: "btn btn-primary" %>
         </div>
       </div>
     </div>

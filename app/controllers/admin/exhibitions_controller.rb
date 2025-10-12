@@ -7,8 +7,8 @@ module Admin
 
     def index
       @exhibitions = ExhibitionsFilter.new(Exhibition.all, params).apply_filters
-                    .page(params[:page])
-                    .per(9)
+        .page(params[:page])
+        .per(9)
     end
 
     def show

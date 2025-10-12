@@ -17,10 +17,10 @@
           <% if artist.contact_email.present? || artist.contact_phone.present? %>
             <small class="d-block">
               <% if artist.contact_email.present? %>
-                <%= mail_to artist.contact_email, artist.contact_email, class: 'text-muted' %><br>
+                <%= mail_to artist.contact_email, artist.contact_email, class: "text-muted" %><br>
               <% end %>
               <% if artist.contact_phone.present? %>
-                <%= link_to artist.contact_phone, "tel:#{artist.contact_phone}", class: 'text-muted' %>
+                <%= link_to artist.contact_phone, "tel:#{artist.contact_phone}", class: "text-muted" %>
               <% end %>
             </small>
           <% end %>
@@ -30,11 +30,11 @@
       <div class="mt-2">
         <strong>Dimensions:</strong> <%= exhibit.width %> x <%= exhibit.height %> x <%= exhibit.depth %> m<br>
         <strong>Weight:</strong> <%= exhibit.weight %> kg<br>
-        <strong>Created:</strong> <%= exhibit.creation_date.strftime('%Y-%m-%d') %>
+        <strong>Created:</strong> <%= exhibit.creation_date.strftime("%Y-%m-%d") %>
       </div>
 
       <% if current_user.admin? %>
-        <%= button_to 'Delete', exhibit_path(exhibit), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+        <%= button_to "Delete", exhibit_path(exhibit), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-danger" %>
       <% end %>
     </div>
   </div>

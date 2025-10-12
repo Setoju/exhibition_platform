@@ -17,20 +17,20 @@
 
     <div class="mb-3">
       <%= f.label :width, class: "form-label" %>
-      <%= f.number_field :width, step: '0.01', class: "form-control" %>
+      <%= f.number_field :width, step: "0.01", class: "form-control" %>
     </div>
 
     <div class="mb-3">
       <%= f.label :height, class: "form-label" %>
-      <%= f.number_field :height, step: '0.01', class: "form-control" %>
+      <%= f.number_field :height, step: "0.01", class: "form-control" %>
     </div>
 
     <div class="mb-3">
       <%= f.label :depth, class: "form-label" %>
-      <%= f.number_field :depth, step: '0.01', class: "form-control" %>
+      <%= f.number_field :depth, step: "0.01", class: "form-control" %>
     </div>
 
     <%= f.submit class: "btn btn-primary" %>
-    <%= link_to 'Back', request.referer || admin_exhibition_center_rooms_path(exhibition_center), class: 'btn btn-secondary' %>
+    <%= link_to "Back", request.referer || admin_exhibition_center_rooms_path(exhibition_center), class: "btn btn-secondary" %>
   <% end %>
 </div>

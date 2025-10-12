@@ -19,12 +19,12 @@
           <%= form.text_field :name, class: "form-control" %>
         </div>        <div class="mb-3">
           <%= form.label :exhibition_type_id, "Exhibit Type", class: "form-label" %>
-          <%= form.collection_select :exhibition_type_id, ExhibitionType.all, :id, :name, 
-              { prompt: "Select Exhibit Type" }, 
-              class: "form-select",
-              data: {
-                descriptions: ExhibitionType.all.map { |type| [type.id, type.description] }.to_h.to_json
-              } %>
+          <%= form.collection_select :exhibition_type_id, ExhibitionType.all, :id, :name,
+                                     { prompt: "Select Exhibit Type" },
+                                     class: "form-select",
+                                     data: {
+                                       descriptions: ExhibitionType.all.map { |type| [type.id, type.description] }.to_h.to_json,
+                                     } %>
           <small id="exhibitionTypeDescription" class="form-text text-muted mt-1"></small>
         </div>
 
@@ -92,8 +92,8 @@
         </div>
 
         <div class="d-flex gap-2">
-          <%= form.submit 'Create Exhibit', class: "btn btn-primary" %>
-          <%= link_to 'Back to Exhibition', exhibition_path(@exhibition), class: 'btn btn-secondary' %>
+          <%= form.submit "Create Exhibit", class: "btn btn-primary" %>
+          <%= link_to "Back to Exhibition", exhibition_path(@exhibition), class: "btn btn-secondary" %>
         </div>
       <% end %>
     </div>

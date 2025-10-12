@@ -7,8 +7,8 @@
           <div class="card-body">
             <h5 class="card-title"><%= exhibition.name %></h5>
             <p class="card-text"><%= truncate(exhibition.description, length: 100) %></p>
-            <%= link_to 'View', exhibition_path(exhibition), class: 'btn btn-primary mb-1' %>
-            <%= button_to 'Remove from Favourites', exhibition_favourite_path(exhibition), method: :delete, class: 'btn btn-warning btn-sm' %>
+            <%= link_to "View", exhibition_path(exhibition), class: "btn btn-primary mb-1" %>
+            <%= button_to "Remove from Favourites", exhibition_favourite_path(exhibition), method: :delete, class: "btn btn-warning btn-sm" %>
           </div>
         </div>
       </div>

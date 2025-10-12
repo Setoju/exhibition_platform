@@ -7,15 +7,15 @@ module Admin
 
     def index
       @rooms = RoomsFilter.new(@exhibition_center.rooms, params).apply_filters
-                .page(params[:page])
-                .per(5)
+        .page(params[:page])
+        .per(5)
     end
 
     def show
       @room = @exhibition_center.rooms.find(params[:id])
       @exhibitions = ExhibitionsFilter.new(@room.exhibitions, params).apply_filters
-                    .page(params[:page])
-                    .per(5)
+        .page(params[:page])
+        .per(5)
     end
 
     def new

@@ -5,8 +5,8 @@ class Admin::ExhibitionCentersController < ApplicationController
 
   def index
     @exhibition_centers = Admin::ExhibitionCentersFilter.new(ExhibitionCenter.all, params).apply_filters
-                         .page(params[:page])
-                         .per(5)
+      .page(params[:page])
+      .per(5)
   end
 
   def show
