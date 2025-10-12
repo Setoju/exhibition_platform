@@ -17,3 +17,7 @@
 <% else %>
   <p>You have no favourite exhibitions yet.</p>
 <% end %>
+
+<div class="pagination-container main-content">
+  <%= paginate @favourite_exhibitions %>
+</div>

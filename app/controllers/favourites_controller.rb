@@ -2,7 +2,7 @@ class FavouritesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @favourite_exhibitions = current_user.favourite_exhibitions
+    @favourite_exhibitions = current_user.favourite_exhibitions.page(params[:page]).per(9)
   end
 
   def create
