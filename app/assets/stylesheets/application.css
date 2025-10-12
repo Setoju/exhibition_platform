@@ -11,15 +11,28 @@
 
 /* Minimal styles for layout and branding */
 
+/* Flexbox layout for sticky footer */
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.container.main-padding {
+  flex: 1 0 auto; /* This will take up the remaining space */
+}
+
 .footer {
-  position: fixed;
-  bottom: 0;
+  flex-shrink: 0; /* Prevent footer from shrinking */
   width: 100%;
   background-color: #f8f9fa;
   border-top: 1px solid #e9ecef;
   padding: 10px 0;
   text-align: center;
-  z-index: 1030;
+  margin-top: auto; /* Push footer to bottom */
 }
 
 .footer-text {
@@ -36,10 +49,6 @@
 
 .text-orange:hover {
   text-decoration: underline;
-}
-
-.main-padding {
-  padding-bottom: 18px; /* Ensure space for the fixed footer */
 }
 
 h1, h2, h3, h4, h5, h6 {
