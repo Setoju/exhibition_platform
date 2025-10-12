@@ -54,3 +54,20 @@
   justify-content: center;
   align-items: center;
 }
+
+@media (max-width: 775px) {
+  .pagination-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .pagination-container .btn {
+    position: static !important;
+    align-self: center !important;
+    order: 2; /* Places button after pagination */
+  }
+  
+  .pagination {
+    order: 1; /* Places pagination first */
+  }
+}

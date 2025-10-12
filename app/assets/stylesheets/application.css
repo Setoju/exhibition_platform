@@ -39,6 +39,13 @@ body {
   color: #212529;
 }
 
+.navbar-nav {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+}
+
 .text-orange {
   color: #ff4500;
   text-decoration: none;
