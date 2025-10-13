@@ -1,0 +1,9 @@
+Hello!
+
+This is a reminder that the exhibition "<%= @exhibition.name %>" will start in 3 days.
+
+Date: <%= @exhibition.start_date.strftime("%B %d, %Y") %>
+Exhibition Center: <%= @exhibition.exhibition_center.name %>
+Location: <%= @exhibition.exhibition_center.address %>
+
+We look forward to seeing you there!

@@ -1,0 +1,6 @@
+<h1>Hello!</h1>
+<p>This is a reminder that the exhibition "<strong><%= @exhibition.name %></strong>" will start in 3 days.</p>
+<p>Date: <%= @exhibition.start_date.strftime("%B %d, %Y") %></p>
+<p>Exhibition Center: <%= @exhibition.exhibition_center.name %></p>
+<p>Location: <%= @exhibition.exhibition_center.address %></p>
+<p>We look forward to seeing you there!</p>
