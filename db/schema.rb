@@ -123,17 +123,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_15_220000) do
     t.index ["user_id"], name: "index_favourites_on_user_id"
   end
 
-  create_table "purchases", force: :cascade do |t|
-    t.bigint "ticket_id", null: false
-    t.datetime "purchase_date"
-    t.datetime "purchase_time"
-    t.string "customer_name"
-    t.string "customer_email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["ticket_id"], name: "index_purchases_on_ticket_id"
-  end
-
   create_table "rooms", force: :cascade do |t|
     t.bigint "exhibition_center_id", null: false
     t.string "name"
@@ -143,26 +132,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_15_220000) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["exhibition_center_id"], name: "index_rooms_on_exhibition_center_id"
-  end
-
-  create_table "ticket_types", force: :cascade do |t|
-    t.string "type_name"
-    t.string "description"
-    t.float "discount"
-    t.string "access_level"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "tickets", force: :cascade do |t|
-    t.bigint "exhibition_id", null: false
-    t.bigint "ticket_type_id", null: false
-    t.float "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "ticket_type", default: 0, null: false
-    t.index ["exhibition_id"], name: "index_tickets_on_exhibition_id"
-    t.index ["ticket_type_id"], name: "index_tickets_on_ticket_type_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -191,8 +160,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_15_220000) do
   add_foreign_key "exhibits", "rooms"
   add_foreign_key "favourites", "exhibitions"
   add_foreign_key "favourites", "users"
-  add_foreign_key "purchases", "tickets"
   add_foreign_key "rooms", "exhibition_centers"
-  add_foreign_key "tickets", "exhibitions"
-  add_foreign_key "tickets", "ticket_types"
 end
