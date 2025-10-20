@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Admin::ExhibitionCentersFilter do
+RSpec.describe Admin::ExhibitionCentersFilter, type: :service do
     let (:exhibition_center1) { create(:exhibition_center) }
     let (:exhibition_center2) { create(:exhibition_center) }
     let (:exhibition_center3) { create(:exhibition_center) }
