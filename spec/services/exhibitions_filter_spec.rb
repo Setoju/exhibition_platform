@@ -35,8 +35,8 @@ RSpec.describe ExhibitionsFilter do
 
         context 'when filtering by multiple criteria' do
             it 'returns exhibitions matching all criteria' do
-                params = { 
-                    search_name: exhibition1.name, 
+                params = {
+                    search_name: exhibition1.name,
                     exhibition_type_id: exhibition1.exhibition_type_id,
                     exhibition_center: exhibition1.exhibition_center.name
                 }

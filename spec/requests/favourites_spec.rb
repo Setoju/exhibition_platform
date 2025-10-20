@@ -47,7 +47,7 @@ RSpec.describe "Favourites", type: :request do
     end
   end
 
-  describe "DELETE favourites" do 
+  describe "DELETE favourites" do
     before { sign_in(user) }
     before { user.favourites.create(exhibition: exhibition) }
 

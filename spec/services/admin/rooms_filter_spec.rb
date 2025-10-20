@@ -18,21 +18,21 @@ RSpec.describe Admin::RoomsFilter, type: :service do
 
         context 'when filtering by physical parameters' do
             it 'returns rooms with width greater than or equal to the minimum' do
-                min_width = [room2.width, room3.width, room1.width].min
+                min_width = [ room2.width, room3.width, room1.width ].min
                 params = { min_width: min_width }
                 filtered = Admin::RoomsFilter.new(rooms, params).apply_filters
                 expect(filtered).to include(room1, room2, room3)
             end
 
             it 'returns rooms with height greater than or equal to the minimum' do
-                min_height = [room2.height, room3.height, room1.height].min
+                min_height = [ room2.height, room3.height, room1.height ].min
                 params = { min_height: min_height }
                 filtered = Admin::RoomsFilter.new(rooms, params).apply_filters
                 expect(filtered).to include(room1, room2, room3)
             end
 
             it 'returns rooms with depth greater than or equal to the minimum' do
-                min_depth = [room2.depth, room3.depth, room1.depth].min
+                min_depth = [ room2.depth, room3.depth, room1.depth ].min
                 params = { min_depth: min_depth }
                 filtered = Admin::RoomsFilter.new(rooms, params).apply_filters
                 expect(filtered).to include(room1, room2, room3)
