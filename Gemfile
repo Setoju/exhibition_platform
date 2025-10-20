@@ -52,6 +52,7 @@ gem "rspec-rails", group: %i[ development test ]
 gem "factory_bot_rails", group: %i[ development test ]
 gem "faker", group: %i[ development test ]
 gem "simplecov", group: %i[ development test ], require: false
+gem "rails-controller-testing", group: %i[ development test ]
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
